@@ -7,7 +7,7 @@
 #    http://shiny.rstudio.com/
 #
 
-run <- function() {
+milanpollution <- function() {
 library(shiny)
 library(ggplot2)
 library(forecast)
