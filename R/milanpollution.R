@@ -14,9 +14,7 @@ milanpollution <- function() {
     loadlibreries()
     test = datacleaning()
     # Define UI for application that draws a histogram
-    header <- dashboardHeader(
-        title = "Milan pollution 2019"
-    )
+
     ui <- fluidPage(
         titlePanel("Milan pollution 2019"),
         sidebarLayout(
