@@ -14,7 +14,6 @@ milanpollution <- function() {
     loadlibreries()
     test = datacleaning()
     # Define UI for application that draws a histogram
-
     ui <- fluidPage(
         titlePanel("Milan pollution 2019"),
         sidebarLayout(
@@ -39,7 +38,8 @@ milanpollution <- function() {
 
                 plotOutput("BarPlot"),
                 plotOutput("Timeseries"),
-                plotOutput("Forecast")
+                plotOutput("Forecast"),
+
 
             ),
 
@@ -105,7 +105,7 @@ loadlibreries <- function()
     require(httr)
     require(jsonlite)
     require(tidyverse)
-    require(shinydashboard)
+   # require(shinydashboard)
 #    require(leaflet)
 
 }
