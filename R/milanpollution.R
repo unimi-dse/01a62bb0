@@ -20,7 +20,7 @@ milanpollution <- function() {
 
     # Define UI for application that draws a histogram
     ui <- fluidPage(
-        headerPanel("Analysis of pollutants 2019"),
+        headerPanel("Analysis of pollutants Milan"),
         hr(),
 
         titlePanel("Milan pollution 2019"),
