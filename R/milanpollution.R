@@ -10,7 +10,9 @@
 #For Make a README
 #https://www.makeareadme.com/
 
+
 milanpollution <- function() {
+
 
 
     loadlibreries()
@@ -18,12 +20,17 @@ milanpollution <- function() {
     test = datacleaning(filerd)
     url = a("Comune di Milano", href="https://dati.comune.milano.it/dataset")
 
-    # Define UI for application that draws a histogram
+    # Define UI for application
     ui <- fluidPage(
-        headerPanel("Analysis of pollutants Milan"),
-        hr(),
+
+
 
         titlePanel("Milan pollution 2019"),
+
+
+        navbarPage("Pollution Milan",
+                   tabPanel("Pollution 2019",
+
         sidebarLayout(
             sidebarPanel(
                 # Dropdown menu for selecting variable from GE data.
@@ -31,6 +38,7 @@ milanpollution <- function() {
                             label = "Select pollutant type",
                             choices = unique(test$inquinante),
                             selected = "PM10"),
+
                  # Default selection
                 sliderInput("lag",
                             "Forecasting lags:",
@@ -40,7 +48,7 @@ milanpollution <- function() {
                 hr(),
                 checkboxInput("regression", "Show Regression line", FALSE),
                 hr(),
-                    helpText("Data from openData",url),
+                helpText("Data from openData",url),
 
 
             ),
@@ -53,13 +61,37 @@ milanpollution <- function() {
             ),
 
 
-        )
+        ) ),
+
+        tabPanel("Stations",
+                 sidebarLayout(
+                     sidebarPanel(
+                         helpText("Data from openData",url),
+                     ),
+
+                 mainPanel(
+
+                     plotOutput("stations_plot"),
+
+                 ))
+
+                 ),
+        tabPanel("Pollution 2017")
+        ),
     )
     # Define server logic required to draw plots
     server <- function(input, output) {
 
 
+        output$stations_plot <- renderPlot(
+        {
+           df =  stazioni_clean(filerd)
+           df
 
+           ggplot(df, aes(x=station_id, y=total_detected, fill=station_id)) +
+               geom_bar(stat="identity",color="black")+theme_minimal()+theme(plot.title = element_text(size=18, face="bold"))+ggtitle("Number of detected datas from each station")
+
+        })
         output$Timeseries <- renderPlot({
 
             if(input$regression)
@@ -68,7 +100,7 @@ milanpollution <- function() {
 
                 poll = subset(test,subset= inquinante==inp)
                 poll= poll[,c('data','valore')]
-                ggplot(poll, aes(x=data,y=valore, group=1))+geom_point()+geom_line()+ geom_smooth(method="lm")
+                ggplot(poll, aes(x=data,y=valore, group=1))+geom_point()+geom_line()+ geom_smooth(method="lm")+theme_minimal()
                 #Render plot data on x and value on y
 
             }
@@ -94,7 +126,6 @@ milanpollution <- function() {
             poll = subset(test,subset= inquinante==inp)
             poll= poll[,c('data','valore')]
             ggplot(poll, aes(x=data,y=valore, group=1, color=valore))+geom_point()+geom_line()+ geom_smooth(method="lm")
-
             time = poll$data = NULL
             time.ts = as.ts(poll)
             fit = auto.arima(time.ts)
@@ -138,6 +169,28 @@ scraping <- function()
 
 }
 
+stazioni_clean <- function(file)
+{
+    file$valore = as.double(file$valore)
+    file$inquinante = as.factor(file$inquinante)
+    file$stazione_id = factor(file$stazione_id)
+    file = file[complete.cases(file),]
+
+
+    i = sort(unique(file$stazione_id))
+    df = data.frame()
+    for(j in i)
+    {
+        missing = file$stazione_id == j
+        lis = list(j,length(file$stazione_id[missing]))
+        df = rbind(df,lis,stringsAsFactors=FALSE)
+    }
+    colnames(df)= c("station_id","total_detected")
+
+    return(df)
+
+
+}
 datacleaning <- function(leggo)
 {
     Data = leggo
@@ -161,4 +214,4 @@ installpack <- function()
             install.packages(j)
 }
 
-milanpollution()
+#milanpollution()
