@@ -105,7 +105,7 @@ loadlibreries <- function()
     require(httr)
     require(jsonlite)
     require(tidyverse)
-   # require(shinydashboard)
+    require(shinydashboard)
 #    require(leaflet)
 
 }
