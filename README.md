@@ -13,7 +13,7 @@ devtools::install_github('unimi-dse/01a62bb0')
 <br>
 <h2> Usage</h2>
 <p> Load the package </p>
-<pre>
+```R
 require(milanpollution)
-</pre>
+```
 <p> The only function of the package is <code> milanpollution() </code> and loads the Sciny application </p>
