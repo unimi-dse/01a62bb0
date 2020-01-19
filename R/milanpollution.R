@@ -99,16 +99,16 @@ milanpollution <- function() {
 
 loadlibreries <- function()
 {
-    library(shiny)
-    library(ggplot2)
-    library(forecast)
-    library(xts)
-    library(ckanr)
-    library(httr)
-    library(jsonlite)
-    library(tidyverse)
-    library(shinydashboard)
-    library(leaflet)
+    require(shiny)
+    require(ggplot2)
+    require(forecast)
+    require(xts)
+    require(ckanr)
+    require(httr)
+    require(jsonlite)
+    require(tidyverse)
+   # require(shinydashboard)
+#    require(leaflet)
 
 }
 
@@ -131,5 +131,4 @@ datacleaning <- function()
     Data$data = as.Date(Data$data)
     test = aggregate(valore~ data+inquinante, Data , mean)
 }
-milanpollution()
 

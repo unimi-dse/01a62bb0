@@ -1,12 +1,13 @@
-\name{hello}
-\alias{hello}
-\title{Hello, World!}
+\name{milanpollution}
+\alias{milanpollution}
+\title{Milan pollution 2019}
 \usage{
-hello()
+milanpollution()
 }
 \description{
-Prints 'Hello, world!'.
+
+Run Milan pollution Sciny app.
 }
 \examples{
-hello()
+milanpollution()
 }
