@@ -145,7 +145,10 @@ datacleaning <- function()
 
 installpack <- function()
 {
-    install.packages(c("shiny","ggplot2","forecast","xts","ckanr","httr","jsonlite","tidyverse"))
+    i =c("shiny","ggplot2","forecast","xts","ckanr","httr","jsonlite","tidyverse")
+    for(j in i)
+        if(!require(j))
+            install.packages(j)
 }
 
 #milanpollution()

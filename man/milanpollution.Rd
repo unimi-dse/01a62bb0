@@ -11,3 +11,7 @@ Run Milan pollution Sciny app.
 \examples{
 milanpollution()
 }
+
+\author{
+Andrea Ierardi
+}
