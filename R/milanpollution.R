@@ -15,6 +15,9 @@ milanpollution <- function() {
     test = datacleaning()
     # Define UI for application that draws a histogram
     ui <- fluidPage(
+        headerPanel("Analysis of pollutants 2019"),
+        hr(),
+
         titlePanel("Milan pollution 2019"),
         sidebarLayout(
             sidebarPanel(
@@ -23,12 +26,18 @@ milanpollution <- function() {
                             label = "Select pollutant type",
                             choices = unique(test$inquinante),
                             selected = "PM10"),
-                hr(),
-                helpText("Data from openData comune di Milano"),
-                # Default selection
+                 # Default selection
                 sliderInput("lag",
                             "Forecasting lags:",
-                            min = 1,  max = 50, value = 1),
+                            min = 1,  max = 50, value = 10),
+
+
+                hr(),
+                checkboxInput("regression", "Show Regression line", FALSE),
+                hr(),
+
+                helpText("Data from openData comune di Milano"),
+
             ),
 
 
@@ -36,7 +45,6 @@ milanpollution <- function() {
 
             mainPanel(
 
-                plotOutput("BarPlot"),
                 plotOutput("Timeseries"),
                 plotOutput("Forecast"),
 
@@ -50,28 +58,33 @@ milanpollution <- function() {
     server <- function(input, output) {
 
 
-        output$BarPlot <- renderPlot({
-            inp = input$pollutant
-
-            poll = subset(test,subset= inquinante==inp)
-            poll= poll[,c('data','valore')]
-            ggplot(poll, aes(x=data,y=valore, group=1))+geom_point()+geom_line()+ geom_smooth(method="lm")
-
-            #Render plot data on x and value on y
-        })
-
 
         output$Timeseries <- renderPlot({
-            inp = input$pollutant
 
-            poll = subset(test,subset= inquinante==inp)
-            poll= poll[,c('data','valore')]
-            ggplot(poll, aes(x=data,y=valore, group=1))+geom_point()+geom_line()+ geom_smooth(method="lm")
+            if(input$regression)
+            {
+                inp = input$pollutant
 
-            time = poll$data = NULL
-            time.ts = as.ts(poll)
-            plot(time.ts)
-            # Render timeseries plot
+                poll = subset(test,subset= inquinante==inp)
+                poll= poll[,c('data','valore')]
+                ggplot(poll, aes(x=data,y=valore, group=1))+geom_point()+geom_line()+ geom_smooth(method="lm")
+                #Render plot data on x and value on y
+
+            }
+
+            else
+                {
+                    inp = input$pollutant
+
+                    poll = subset(test,subset= inquinante==inp)
+                    poll= poll[,c('data','valore')]
+
+                    time = poll$data = NULL
+                    time.ts = as.ts(poll)
+                    plot(time.ts)+ geom_smooth(method="lm")
+                    # Render timeseries plot
+
+            }
 
         })
 
@@ -130,4 +143,9 @@ datacleaning <- function()
     test = aggregate(valore~ data+inquinante, Data , mean)
 }
 
-#test
+installpack <- function()
+{
+    install.packages(c("shiny","ggplot2","forecast","xts","ckanr","httr","jsonlite","tidyverse"))
+}
+
+#milanpollution()
