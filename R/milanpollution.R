@@ -7,12 +7,17 @@
 #    http://shiny.rstudio.com/
 #
 
+#For Make a README
+#https://www.makeareadme.com/
 
 milanpollution <- function() {
 
 
     loadlibreries()
-    test = datacleaning()
+    filerd= scraping()
+    test = datacleaning(filerd)
+    url = a("Comune di Milano", href="https://dati.comune.milano.it/dataset")
+
     # Define UI for application that draws a histogram
     ui <- fluidPage(
         headerPanel("Analysis of pollutants 2019"),
@@ -35,19 +40,15 @@ milanpollution <- function() {
                 hr(),
                 checkboxInput("regression", "Show Regression line", FALSE),
                 hr(),
+                    helpText("Data from openData",url),
 
-                helpText("Data from openData comune di Milano"),
 
             ),
-
-
-
 
             mainPanel(
 
                 plotOutput("Timeseries"),
                 plotOutput("Forecast"),
-
 
             ),
 
@@ -123,7 +124,7 @@ loadlibreries <- function()
 
 }
 
-datacleaning <- function()
+scraping <- function()
 {
     url <- paste0("http://dati.comune.milano.it/api/action/",
                   "datastore_search?",
@@ -133,6 +134,12 @@ datacleaning <- function()
     leggo_list <- fromJSON(url)
     leggo <- leggo_list$result$records
 
+    return(leggo)
+
+}
+
+datacleaning <- function(leggo)
+{
     Data = leggo
     Data$stazione_id=NULL
     Data$`_id`=NULL
@@ -141,7 +148,10 @@ datacleaning <- function()
     Data = Data[complete.cases(Data),]
     Data$data = as.Date(Data$data)
     test = aggregate(valore~ data+inquinante, Data , mean)
+
+    return (test)
 }
+
 
 installpack <- function()
 {
@@ -151,4 +161,4 @@ installpack <- function()
             install.packages(j)
 }
 
-#milanpollution()
+milanpollution()

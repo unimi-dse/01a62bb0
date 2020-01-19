@@ -16,14 +16,7 @@ Andrea Ierardi
 
 \examples{
 
-## The function is currently defined as
-installpack <- function()
-{
-    i =c("shiny","ggplot2","forecast","xts","ckanr","httr","jsonlite","tidyverse")
-    for(j in i)
-        if(!require(j))
-            install.packages(j)
-}
+installpack()
 
 }
 
