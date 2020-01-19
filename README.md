@@ -13,6 +13,7 @@ devtools::install_github('unimi-dse/01a62bb0')
 <br>
 <h2> Usage</h2>
 <p> Load the package </p>
+
 ```R
 require(milanpollution)
 ```
