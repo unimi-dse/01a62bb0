@@ -13,21 +13,38 @@
 
 
 
+loadlibreries <- function()
+{
+    require(shiny)
+    require(ggplot2)
+    require(forecast)
+    require(xts)
+    require(ckanr)
+    require(httr)
+    require(jsonlite)
+    require(tidyverse)
+    require(plotly)
+    require(TSplotly)
+}
+installpack()
+loadlibreries()
+
+url = a("Comune di Milano", href="https://dati.comune.milano.it/dataset")
+
+flat_ds2019= scraping("698a58e6-f276-44e1-92b1-3d2b81a4ad47")
+ds2019 = datacleaning(flat_ds2019)
+flat_ds2018 = scraping("ea80c691-74bd-4356-94b6-0f446f190c0b")
+
+ds2018 = datacleaning(flat_ds2018)
+flat_ds2017= scraping("a032a06e-24c2-4df1-ac83-d001e9ddc577")
+ds2017 =datacleaning(flat_ds2017)
+
 milanpollution <- function()
  {
 
 
 
-    loadlibreries()
-    url = a("Comune di Milano", href="https://dati.comune.milano.it/dataset")
 
-    flat_ds2019= scraping("698a58e6-f276-44e1-92b1-3d2b81a4ad47")
-    ds2019 = datacleaning(flat_ds2019)
-    flat_ds2018 = scraping("ea80c691-74bd-4356-94b6-0f446f190c0b")
-
-    ds2018 = datacleaning(flat_ds2018)
-    flat_ds2017= scraping("a032a06e-24c2-4df1-ac83-d001e9ddc577")
-    ds2017 =datacleaning(flat_ds2017)
 
     test =ds2019
 
@@ -186,20 +203,6 @@ milanpollution <- function()
 
     # Run the application
     shinyApp(ui = ui, server = server)
-}
-
-loadlibreries <- function()
-{
-    require(shiny)
-    require(ggplot2)
-    require(forecast)
-    require(xts)
-    require(ckanr)
-    require(httr)
-    require(jsonlite)
-    require(tidyverse)
-    require(plotly)
-    require(TSplotly)
 }
 
 scraping <- function(id)
