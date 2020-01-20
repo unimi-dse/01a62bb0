@@ -11,6 +11,95 @@
 #https://www.makeareadme.com/
 
 
+installpack <- function()
+{
+    packages  =c("shiny","ggplot2","forecast","xts","ckanr","httr","jsonlite","tidyverse","plotly","TSplotly")
+    if (length(setdiff(packages, rownames(installed.packages()))) > 0) {
+        install.packages(setdiff(packages, rownames(installed.packages())))
+    }
+}
+
+scraping <- function(id)
+{
+    url <- paste0("http://dati.comune.milano.it/api/action/",
+                  "datastore_search?", paste("resource_id=", id,"&limit=10000", sep=""))
+    page <- GET(url) # API request
+    status_code(page) # # Check that the call is successful
+    leggo_list <- fromJSON(url)
+    leggo <- leggo_list$result$records
+
+    return(leggo)
+
+}
+
+stazioni_clean <- function(file)
+{
+    file$valore = as.double(file$valore)
+    file$inquinante = as.factor(file$inquinante)
+    file$stazione_id = factor(file$stazione_id)
+    file = file[complete.cases(file),]
+
+
+    i = sort(unique(file$stazione_id))
+    df = data.frame()
+    for(j in i)
+    {
+        missing = file$stazione_id == j
+        lis = list(j,length(file$stazione_id[missing]))
+        df = rbind(df,lis,stringsAsFactors=FALSE)
+    }
+    colnames(df)= c("station_id","total_detected")
+
+    return(df)
+
+
+}
+datacleaning <- function(leggo)
+{
+    Data = leggo
+    Data$stazione_id=NULL
+    Data$`_id`=NULL
+    Data$valore = as.double(Data$valore)
+    Data$inquinante = as.factor(Data$inquinante)
+    Data = Data[complete.cases(Data),]
+    Data$data = as.Date(Data$data)
+    test = aggregate(valore~ data+inquinante, Data , mean)
+
+    return (test)
+}
+
+checkyears  <- function(year, flat)
+{
+
+    if(flat)
+    {
+        if(year=="2019")
+        {
+            return(flat_ds2019)
+        }
+        if(year=="2018")
+        {
+            return(flat_ds2018)
+        }
+        if(year=="2017")
+        {
+            return(flat_ds2017)
+        }
+    }
+    if(year=="2019")
+    {
+        return(ds2019)
+    }
+    if(year=="2018")
+    {
+        return(ds2018)
+    }
+    if(year=="2017")
+    {
+        return(ds2017)
+    }
+
+}
 
 
 loadlibreries <- function()
@@ -205,97 +294,8 @@ milanpollution <- function()
     shinyApp(ui = ui, server = server)
 }
 
-scraping <- function(id)
-{
-    url <- paste0("http://dati.comune.milano.it/api/action/",
-                  "datastore_search?", paste("resource_id=", id,"&limit=10000", sep=""))
-    page <- GET(url) # API request
-    status_code(page) # # Check that the call is successful
-    leggo_list <- fromJSON(url)
-    leggo <- leggo_list$result$records
-
-    return(leggo)
-
-}
-
-stazioni_clean <- function(file)
-{
-    file$valore = as.double(file$valore)
-    file$inquinante = as.factor(file$inquinante)
-    file$stazione_id = factor(file$stazione_id)
-    file = file[complete.cases(file),]
 
 
-    i = sort(unique(file$stazione_id))
-    df = data.frame()
-    for(j in i)
-    {
-        missing = file$stazione_id == j
-        lis = list(j,length(file$stazione_id[missing]))
-        df = rbind(df,lis,stringsAsFactors=FALSE)
-    }
-    colnames(df)= c("station_id","total_detected")
-
-    return(df)
-
-
-}
-datacleaning <- function(leggo)
-{
-    Data = leggo
-    Data$stazione_id=NULL
-    Data$`_id`=NULL
-    Data$valore = as.double(Data$valore)
-    Data$inquinante = as.factor(Data$inquinante)
-    Data = Data[complete.cases(Data),]
-    Data$data = as.Date(Data$data)
-    test = aggregate(valore~ data+inquinante, Data , mean)
-
-    return (test)
-}
-
-checkyears  <- function(year, flat)
-{
-
-    if(flat)
-    {
-        if(year=="2019")
-        {
-            return(flat_ds2019)
-        }
-        if(year=="2018")
-        {
-            return(flat_ds2018)
-        }
-        if(year=="2017")
-        {
-            return(flat_ds2017)
-        }
-    }
-    if(year=="2019")
-    {
-        return(ds2019)
-    }
-    if(year=="2018")
-    {
-        return(ds2018)
-    }
-    if(year=="2017")
-    {
-        return(ds2017)
-    }
-
-}
-
-installpack <- function()
-{
-    packages  =c("shiny","ggplot2","forecast","xts","ckanr","httr","jsonlite","tidyverse","plotly","TSplotly")
-    if (length(setdiff(packages, rownames(installed.packages()))) > 0) {
-        install.packages(setdiff(packages, rownames(installed.packages())))
-    }
-}
-
-
-milanpollution()
+#milanpollution()
 
 
