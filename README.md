@@ -17,4 +17,15 @@ devtools::install_github('unimi-dse/01a62bb0')
 ```R
 require(milanpollution)
 ```
-<p> The only function of the package is <code> milanpollution() </code> and loads the Shiny application </p>
+
+<p> There are two main functions of the package that are <code> milanpollution() </code> and <code> installpack() </code>.
+  
+ <h3> Functions </h3>
+ <code> installpack() </code>
+ <p> This function will install the needed packages to run the application. It is suggested to run this function before the --- milanpollution()--- function. </p>
+ <br>
+ <code> milanpollution()code>
+  <p> This function loads the Shiny  application </p>
+  
+  
+ <h2> Description of the application </h2>
