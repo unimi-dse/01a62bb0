@@ -11,20 +11,15 @@
 #https://www.makeareadme.com/
 
 
-flat_ds2019= scraping("698a58e6-f276-44e1-92b1-3d2b81a4ad47")
-ds2019 = datacleaning(flat_ds2019)
-flat_ds2018 = scraping("ea80c691-74bd-4356-94b6-0f446f190c0b")
-ds2018 = datacleaning(flat_ds2018)
-flat_ds2017= scraping("a032a06e-24c2-4df1-ac83-d001e9ddc577")
-ds2017 =datacleaning(flat_ds2017)
-url = a("Comune di Milano", href="https://dati.comune.milano.it/dataset")
 
 
-milanpollution <- function() {
+milanpollution <- function()
+ {
 
-    loadlibreries()
 
-test =ds2019
+
+
+    test =ds2019
 
     # Define UI for application
     ui <- fluidPage(
@@ -32,8 +27,9 @@ test =ds2019
 
 
         titlePanel(  h1(id="big-heading", "Milan Pollution Analisys")),
-        tags$style(HTML("#big-heading{ color: #7c795d; font-family: 'Raleway',sans-serif; font-size: 40px; font-weight: 600; line-height: 27px; margin: 0 0 10px; text-align: center; }")),
+        tags$style(HTML("#big-heading{ color: #7c795d; font-family: 'Raleway',sans-serif; font-size: 48px; font-weight: 600; line-height: 27px; margin: 0 0 10px; text-align: center; }")),
 
+        hr(),
         navbarPage("Pollution Milan",
                    tabPanel("Pollution",
 
@@ -50,7 +46,7 @@ test =ds2019
                             min = 1,  max = 50, value = 10),
 
 
-                hr(),
+                br(),
                 checkboxInput("regression", "Show Regression line", TRUE),
                 hr(),
                 helpText("Data from openData",url),
@@ -68,6 +64,7 @@ test =ds2019
 
                 plotOutput("Timeseries"),
                 plotOutput("Forecast"),
+
 
             ),
 
@@ -119,6 +116,10 @@ test =ds2019
                 poll= poll[,c('data','valore')]
                 ggplot(poll, aes(x=data,y=valore, group=1),)+geom_line(color = "#00AFBB",size=1)+ geom_smooth(method="lm")+theme_minimal()+theme(plot.title = element_text(size=16, face="bold"))+ggtitle(paste("Time series+regression year:",input$years," of ",inp))
                 #Render plot data on x and value on y
+            #   poll %>%
+             #      ggvis(~valore,~data) %>%
+              #    layer_points() %>%
+             #    add_tooltip(function(poll) poll$valore)
 
             }
 
@@ -134,6 +135,8 @@ test =ds2019
                     time.ts = as.ts(poll)
                     plot(time.ts,main=paste("Time series year:",input$years," of ",inp))+ geom_smooth(method="lm")
                     # Render timeseries plot
+
+
 
             }
 
@@ -156,6 +159,7 @@ test =ds2019
             plot(forecast(fit,input$lag))
         })
     }
+
 
     # Run the application
     shinyApp(ui = ui, server = server)
@@ -263,5 +267,16 @@ installpack <- function()
             install.packages(j)
 }
 
-#milanpollution()
+loadlibreries()
+url = a("Comune di Milano", href="https://dati.comune.milano.it/dataset")
+
+flat_ds2019= scraping("698a58e6-f276-44e1-92b1-3d2b81a4ad47")
+ds2019 = datacleaning(flat_ds2019)
+flat_ds2018 = scraping("ea80c691-74bd-4356-94b6-0f446f190c0b")
+
+ds2018 = datacleaning(flat_ds2018)
+flat_ds2017= scraping("a032a06e-24c2-4df1-ac83-d001e9ddc577")
+ds2017 =datacleaning(flat_ds2017)
+
+milanpollution()
 
