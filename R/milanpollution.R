@@ -37,14 +37,15 @@ milanpollution <- function()
 
 
         titlePanel(  h1(id="big-heading", "Milan Pollution Analisys")),
-        tags$style(HTML("#big-heading{ color: #7c795d; font-family: 'Raleway',sans-serif; font-size: 48px; font-weight: 600; line-height: 27px; margin: 0 0 10px; text-align: center; }")),
+        tags$style(HTML("#backg{background-color:#f4f7f6;} #navb{background-color:#49c5b6;color:#ffffff} #side{background-color:#f4f5f9;} #big-heading{ color: #4990c2; font-family: 'Raleway',sans-serif; font-size: 48px; font-weight: 600; line-height: 27px; margin: 0 0 10px;text-align:center;background-color:#ffffff;}")),
 
         hr(),
-        navbarPage("Pollution Milan",
+        navbarPage( "Pollution Milan",
                    tabPanel("Pollution",
 
         sidebarLayout(
-            sidebarPanel(
+
+            sidebarPanel( id="side",
                 # Dropdown menu for selecting variable from GE data.
                 selectInput("pollutant",
                             label = "Select pollutant type",
@@ -70,30 +71,35 @@ milanpollution <- function()
 
             ),
 
-            mainPanel(
+            mainPanel(id="backg",
 
-               # plotOutput("Timeseries"),
+
                 plotlyOutput('Timeseries'),
+                br(),
+                plotlyOutput("Forecast"),
+                br(),
 
-plotlyOutput("Forecast2"),
-
-
-            ),
+            )
 
 
         ) ),
 
-        tabPanel("Stations",
+        tabPanel(id="side","Stations",
                  sidebarLayout(
-                     sidebarPanel(
+                     sidebarPanel( id="side",
+                         textOutput("stations_info"),
+                         hr(),
+                         br(),
+
+
                          helpText("Data from openData",url),
 
 
                      ),
 
-                 mainPanel(
+                 mainPanel(id="backg",
 
-                     plotOutput("stations_plot"),
+                           plotlyOutput("stations_plot"),
 
                  ))
 
@@ -105,14 +111,24 @@ plotlyOutput("Forecast2"),
     # Define server logic required to draw plots
     server <- function(input, output) {
 
-
-        output$stations_plot <- renderPlot(
+        output$stations_info <- renderText({
+            paste("For the year",
+            input$years, "and there were", length(stazioni_clean(checkyears(input$years, TRUE))$station_id), "active stations.")
+        })
+        output$stations_plot <- renderPlotly(
         {
 
            flat =  checkyears(input$years, TRUE)
            df =  stazioni_clean(flat)
-           ggplot(df, aes(x=station_id, y=total_detected, fill=station_id)) +
-           geom_bar(stat="identity",color="black")+theme_minimal()+theme(plot.title = element_text(size=18, face="bold"))+ggtitle(paste("Number of detected datas from each station year:",input$years))
+
+           plot_ly(df,
+               x = df$station_id,
+               y = df$total_detected,
+               type = "bar",color =df$station_id
+           ) %>%
+               layout(title = paste("Number of detected datas from each station - year:",input$years),
+                      xaxis = list(title = "Station ID"),
+                      yaxis = list(title = "Data detected"))
 
         })
 
@@ -155,39 +171,13 @@ plotlyOutput("Forecast2"),
             inp = input$pollutant
             poll = subset(test,subset= inquinante==inp)
             poll= poll[,c('data','valore')]
-            #ggplot(poll, aes(x=data,y=valore, group=1, color=valore))+geom_point()+geom_line()+ geom_smooth(method="lm")
-            time = poll$data = NULL
-            time.ts = as.ts(poll)
-            fit = auto.arima(time.ts)
+            time = xts(poll[,-1],order.by = poll[,1])
+            fit = auto.arima(time)
+            TSplot(50,forecast(fit,input$lag),  Ylab = "Value", Xlab = "Time(Day)",NEWtitle="ARIMA Forecast",title_size =15, ts_original = "Original time series", ts_forecast= "Predicted time series")
 
-            # Render a forecast plot
-            plot(forecast(fit,input$lag))
+             # Render a forecast plot
 
 
-        })
-
-        output$Forecast2<- renderPlot({
-
-            test = checkyears(input$years,FALSE)
-
-            inp = input$pollutant
-            poll = subset(test,subset= inquinante==inp)
-            poll= poll[,c('data','valore')]
-            ggplot(poll, aes(x=data,y=valore, group=1, color=valore))+geom_point()+geom_line()+ geom_smooth(method="lm")
-            time = poll$data = NULL
-            time.ts = as.ts(poll)
-            fit = auto.arima(time.ts)
-
-            forc =forecast(fit,input$lag)
-            plot(forecast(fit, input$lag))
-
-           # plot_ly(p)
-            #    layout(title = paste('Value of ',inp, "per day of ", input$years),
-             #          xaxis = list(title = 'Days'),
-              #         yaxis = list (title = paste('Value of ',inp)))
-
-            # Render a forecast plot
-            #plot(forecast(fit,input$lag))
         })
 
 
@@ -209,6 +199,7 @@ loadlibreries <- function()
     require(jsonlite)
     require(tidyverse)
     require(plotly)
+    require(TSplotly)
 }
 
 scraping <- function(id)
@@ -295,12 +286,13 @@ checkyears  <- function(year, flat)
 
 installpack <- function()
 {
-    i =c("shiny","ggplot2","forecast","xts","ckanr","httr","jsonlite","tidyverse","plotly")
-    for(j in i)
-        if(!require(j))
-            install.packages(j)
+    packages  =c("shiny","ggplot2","forecast","xts","ckanr","httr","jsonlite","tidyverse","plotly","TSplotly")
+    if (length(setdiff(packages, rownames(installed.packages()))) > 0) {
+        install.packages(setdiff(packages, rownames(installed.packages())))
+    }
 }
 
 
 milanpollution()
+
 
