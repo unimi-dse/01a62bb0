@@ -18,6 +18,16 @@ milanpollution <- function()
 
 
 
+    loadlibreries()
+    url = a("Comune di Milano", href="https://dati.comune.milano.it/dataset")
+
+    flat_ds2019= scraping("698a58e6-f276-44e1-92b1-3d2b81a4ad47")
+    ds2019 = datacleaning(flat_ds2019)
+    flat_ds2018 = scraping("ea80c691-74bd-4356-94b6-0f446f190c0b")
+
+    ds2018 = datacleaning(flat_ds2018)
+    flat_ds2017= scraping("a032a06e-24c2-4df1-ac83-d001e9ddc577")
+    ds2017 =datacleaning(flat_ds2017)
 
     test =ds2019
 
@@ -62,8 +72,10 @@ milanpollution <- function()
 
             mainPanel(
 
-                plotOutput("Timeseries"),
-                plotOutput("Forecast"),
+               # plotOutput("Timeseries"),
+                plotlyOutput('Timeseries'),
+
+plotlyOutput("Forecast2"),
 
 
             ),
@@ -103,46 +115,58 @@ milanpollution <- function()
            geom_bar(stat="identity",color="black")+theme_minimal()+theme(plot.title = element_text(size=18, face="bold"))+ggtitle(paste("Number of detected datas from each station year:",input$years))
 
         })
-        output$Timeseries <- renderPlot({
 
-            test = checkyears(input$years,FALSE)
+        output$Timeseries <- renderPlotly({
 
+
+
+
+            test = checkyears(input$years, FALSE)
+            # Render timeseries plot
+            inp = input$pollutant
+
+            poll = subset(test,subset= inquinante==inp)
+            poll= poll[,c('data','valore')]
             if(input$regression)
             {
+                fit <- lm( poll$valore ~ poll$data, data = poll)
 
-                inp = input$pollutant
-
-                poll = subset(test,subset= inquinante==inp)
-                poll= poll[,c('data','valore')]
-                ggplot(poll, aes(x=data,y=valore, group=1),)+geom_line(color = "#00AFBB",size=1)+ geom_smooth(method="lm")+theme_minimal()+theme(plot.title = element_text(size=16, face="bold"))+ggtitle(paste("Time series+regression year:",input$years," of ",inp))
-                #Render plot data on x and value on y
-            #   poll %>%
-             #      ggvis(~valore,~data) %>%
-              #    layer_points() %>%
-             #    add_tooltip(function(poll) poll$valore)
+                plot_ly(x = poll$data, y = poll$valore, name ="values ",type = 'scatter',mode = 'line')%>%
+                layout(title = paste('Value of ',inp, "per day of ", input$years),
+                       xaxis = list(title = 'Days'),
+                       yaxis = list (title = paste('Value of ',inp))) %>%
+                add_lines(x = ~poll$data, y = fitted(fit), name="regression")
 
             }
 
             else
-                {
-
-                    inp = input$pollutant
-
-                    poll = subset(test,subset= inquinante==inp)
-                    poll= poll[,c('data','valore')]
-
-                    time = poll$data = NULL
-                    time.ts = as.ts(poll)
-                    plot(time.ts,main=paste("Time series year:",input$years," of ",inp))+ geom_smooth(method="lm")
-                    # Render timeseries plot
-
-
-
+            {
+                plot_ly(x = poll$data, y = poll$valore, name ="values ",type = 'scatter',mode = 'line')%>%
+                    layout(title = paste('Value of ',inp, "per day of ", input$years),
+                           xaxis = list(title = 'Days'),
+                           yaxis = list (title = paste('Value of ',inp)))
             }
+        })
+
+        output$Forecast<- renderPlotly({
+
+            test = checkyears(input$years,FALSE)
+
+            inp = input$pollutant
+            poll = subset(test,subset= inquinante==inp)
+            poll= poll[,c('data','valore')]
+            #ggplot(poll, aes(x=data,y=valore, group=1, color=valore))+geom_point()+geom_line()+ geom_smooth(method="lm")
+            time = poll$data = NULL
+            time.ts = as.ts(poll)
+            fit = auto.arima(time.ts)
+
+            # Render a forecast plot
+            plot(forecast(fit,input$lag))
+
 
         })
 
-        output$Forecast<- renderPlot({
+        output$Forecast2<- renderPlot({
 
             test = checkyears(input$years,FALSE)
 
@@ -154,11 +178,20 @@ milanpollution <- function()
             time.ts = as.ts(poll)
             fit = auto.arima(time.ts)
 
+            forc =forecast(fit,input$lag)
+            plot(forecast(fit, input$lag))
+
+           # plot_ly(p)
+            #    layout(title = paste('Value of ',inp, "per day of ", input$years),
+             #          xaxis = list(title = 'Days'),
+              #         yaxis = list (title = paste('Value of ',inp)))
 
             # Render a forecast plot
-            plot(forecast(fit,input$lag))
+            #plot(forecast(fit,input$lag))
         })
-    }
+
+
+           }
 
 
     # Run the application
@@ -175,6 +208,7 @@ loadlibreries <- function()
     require(httr)
     require(jsonlite)
     require(tidyverse)
+    require(plotly)
 }
 
 scraping <- function(id)
@@ -261,22 +295,12 @@ checkyears  <- function(year, flat)
 
 installpack <- function()
 {
-    i =c("shiny","ggplot2","forecast","xts","ckanr","httr","jsonlite","tidyverse")
+    i =c("shiny","ggplot2","forecast","xts","ckanr","httr","jsonlite","tidyverse","plotly")
     for(j in i)
         if(!require(j))
             install.packages(j)
 }
 
-loadlibreries()
-url = a("Comune di Milano", href="https://dati.comune.milano.it/dataset")
-
-flat_ds2019= scraping("698a58e6-f276-44e1-92b1-3d2b81a4ad47")
-ds2019 = datacleaning(flat_ds2019)
-flat_ds2018 = scraping("ea80c691-74bd-4356-94b6-0f446f190c0b")
-
-ds2018 = datacleaning(flat_ds2018)
-flat_ds2017= scraping("a032a06e-24c2-4df1-ac83-d001e9ddc577")
-ds2017 =datacleaning(flat_ds2017)
 
 milanpollution()
 
