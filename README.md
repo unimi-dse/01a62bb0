@@ -22,8 +22,9 @@ require(milanpollution)
   
  <h3> Functions </h3>
  <code> installpack()</code>
- <p> This function will install the needed packages to run the application. **It is suggested to run this function before ** the *milanpollution()* function. </p>
- <br>
+ This function will install the needed packages to run the application. **It is suggested to run this function before ** the *milanpollution()* function.
+
+<br>
  <code> milanpollution()</code>
   <p> This function loads the Shiny  application </p>
   
