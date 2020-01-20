@@ -28,13 +28,13 @@ require(milanpollution)
  <code> milanpollution()</code>
   <p> This function loads the Shiny  application </p>
   
-  
+  <br>
  <h2> Description of the application </h2>
 <p> When runned the milanpollution() function in the console, will be charged the application. It takes a bit to get and charge the data from the OpenData Comune di Milano site using CKAN API </p>
 
 <p> Charged the dataset, the application starts.</p>
 
-<h5> Main page: Pollution </h5>
+<h3> Main page: Pollution </h3>
 #--- put IMAGE ---
 <p> In the main page are presented two plots: the time series of the datas and the related forecast. 
   <li> The first plot represents the time series of the data deteceted by every station day by day. It is possible to check the Checkbox to enable the visualization of the linear regression line. </li>
