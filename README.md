@@ -18,19 +18,19 @@ devtools::install_github('unimi-dse/01a62bb0')
 require(milanpollution)
 ```
 
-<p> There are two main functions of the package that are <code> milanpollution()</code> and <code> installpack()</code>. </p>
+<p> There are two main functions of the package that are <code> pollution()</code> and <code> installpack()</code>. </p>
   
  <h3> Functions </h3>
  <code> installpack()</code>
- <p>This function will install the needed packages to run the application. <bold> It is suggested </bold> to run this function before the <italic> milanpollution() </italic> function. </p>
+ <p>This function will install the needed packages to run the application. <bold> It is suggested </bold> to run this function before the <italic> pollution() </italic> function. </p>
 
 <br>
- <code> milanpollution()</code>
+ <code> pollution()</code>
   <p> This function loads the Shiny  application. </p>
   
   <br>
  <h2> Description of the application </h2>
-<p> When runned the milanpollution() function in the console, will be charged the application. It takes a bit to get and charge the data from the OpenData Comune di Milano site using CKAN API. Charged the dataset, the application will starts. </p>
+<p> When runned the pollution() function in the console, will be charged the application. It takes a bit to get and charge the data from the OpenData Comune di Milano site using CKAN API. Charged the dataset, the application will starts. </p>
 
 <h3> Main page: Pollution </h3>
 #--- put IMAGE ---
