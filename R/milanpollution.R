@@ -11,6 +11,9 @@
 #https://www.makeareadme.com/
 
 
+# Run the application
+pollution <- function()
+{ shinyApp(ui = ui, server = server)}
 installpack <- function()
 {
    packages  =c("shiny","ggplot2","forecast","xts","ckanr","httr","jsonlite","tidyverse","plotly","TSplotly")
@@ -291,9 +294,6 @@ ds2017 =datacleaning(flat_ds2017)
            }
 
 
-    # Run the application
-pollution <- function()
-  { shinyApp(ui = ui, server = server)}
 
 
 #pollution()
