@@ -122,8 +122,18 @@ loadlibreries <- function()
 
 
 installpack()
+
 loadlibreries()
-library(shiny)
+require(shiny)
+require(ggplot2)
+require(forecast)
+require(xts)
+require(ckanr)
+require(httr)
+require(jsonlite)
+require(tidyverse)
+require(plotly)
+require(TSplotly)
 url = a("Comune di Milano", href="https://dati.comune.milano.it/dataset")
 
 flat_ds2019= scraping("698a58e6-f276-44e1-92b1-3d2b81a4ad47")
