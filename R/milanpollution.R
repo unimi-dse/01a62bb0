@@ -128,9 +128,6 @@ ds2018 = datacleaning(flat_ds2018)
 flat_ds2017= scraping("a032a06e-24c2-4df1-ac83-d001e9ddc577")
 ds2017 =datacleaning(flat_ds2017)
 
-pollution<- function()
- {
-
 
 
 
@@ -295,11 +292,11 @@ pollution<- function()
 
            }
 
+
     # Run the application
-    shinyApp(ui = ui, server = server)
+pollution <- function()
+  { shinyApp(ui = ui, server = server)}
 
-
-}
 
 #milanpollution()
 
