@@ -296,5 +296,5 @@ pollution <- function()
   { shinyApp(ui = ui, server = server)}
 
 
-#milanpollution()
+#pollution()
 
