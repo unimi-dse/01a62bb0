@@ -10,6 +10,8 @@
 #Make a README
 #https://www.makeareadme.com/
 
+
+
 # Run the application
 pollution <- function()
 {
@@ -149,7 +151,7 @@ test =ds2019
 
     # Define UI for application
     ui <- fluidPage(titlePanel(h1("Milan Pollution Analisys")),
-      #tags$style(HTML("#backg{border:1px solid black;background-color:#ecf8f2; margin-bottom: 10px;} #navb{background-color:#49c5b6;color:#ffffff} #side{background-color:#f4f5f9;} #big-heading{ color: #4990c2; font-family: 'Raleway',sans-serif; font-size: 48px; font-weight: 600; line-height: 27px; margin: 0 0 10px;text-align:center;background-color:#ffffff;}")),
+      tags$style(HTML("#backg{border:1px solid black;background-color:#ecf8f2; margin-bottom: 10px;} #navb{background-color:#49c5b6;color:#ffffff} #side{background-color:#f4f5f9;} #big-heading{ color: #4990c2; font-family: 'Raleway',sans-serif; font-size: 48px; font-weight: 600; line-height: 27px; margin: 0 0 10px;text-align:center;background-color:#ffffff;}")),
 
         hr(),
         navbarPage( "Pollution Milan",
