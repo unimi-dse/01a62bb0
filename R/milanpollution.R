@@ -128,7 +128,7 @@ ds2018 = datacleaning(flat_ds2018)
 flat_ds2017= scraping("a032a06e-24c2-4df1-ac83-d001e9ddc577")
 ds2017 =datacleaning(flat_ds2017)
 
-milanpollution<- function()
+pollution<- function()
  {
 
 
@@ -225,7 +225,7 @@ milanpollution<- function()
 
         output$stations_info <- renderText({
             paste("In the year",
-            input$years, "and there were", length(stazioni_clean(checkyears(input$years, TRUE))$station_id), "active stations.")
+            input$years, "there were", length(stazioni_clean(checkyears(input$years, TRUE))$station_id), "active stations.")
         })
         output$stations_plot <- renderPlotly(
         {
@@ -301,8 +301,5 @@ milanpollution<- function()
 
 }
 
-
-
-milanpollution()
-
+#milanpollution()
 
