@@ -13,7 +13,7 @@
 
 # Run the application
 pollution <- function()
-{ shinyApp(ui = ui, server = server)}
+{ shiny::shinyApp(ui = ui, server = server)}
 installpack <- function()
 {
    packages  =c("shiny","ggplot2","forecast","xts","ckanr","httr","jsonlite","tidyverse","plotly","TSplotly")
