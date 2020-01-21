@@ -361,5 +361,5 @@ pollution <- function()
 }
 
 #to start the application
-pollution()
+#pollution()
 
