@@ -142,7 +142,7 @@ pollution <- function()
 
   # Define UI for application
   ui <- fluidPage(titlePanel(h1("Milan Pollution Analisys")),
-                  tags$style(HTML("html *{font-family: Arial;} p {font-size:16px;font-family:Arial} h1{text-align: center;} #backg{border:1px solid black;background-color:#ecf8f2; margin-bottom: 10px;} #navb{background-color:#49c5b6;color:#ffffff} #side{background-color:#f4f5f9;} #big-heading{ color: #4990c2; font-family: 'Raleway',sans-serif; font-size: 48px; font-weight: 600; line-height: 27px; margin: 0 0 10px;text-align:center;background-color:#ffffff;}")),
+                  tags$style(HTML("html*{font-family: Arial;} p {font-size:16px;font-family:Arial} h1{text-align: center;} #backg{border:1px solid gray;background-color:#ecf8f2; margin-bottom: 10px;} #navb{background-color:#49c5b6;color:#ffffff} #side{background-color:#f4f5f9;border:1px solid gray;} #big-heading{ color: #4990c2; font-family: 'Raleway',sans-serif; font-size: 48px; font-weight: 600; line-height: 27px; margin: 0 0 10px;text-align:center;background-color:#ffffff;}")),
 
                   hr(),
                   navbarPage( "Pollution Milan",
@@ -211,7 +211,7 @@ pollution <- function()
                                          ),
 
                                          mainPanel(id="backg",
-                                                   h1(paste("Plot results",input$yearstation)),
+                                                   h1("Plot results"),
                                                    hr(),
                                                    plotlyOutput("stations_plot"),
                                                    br(),
