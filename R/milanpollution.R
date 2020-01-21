@@ -10,6 +10,10 @@
 #Make a README
 #https://www.makeareadme.com/
 
+# Run the application
+pollution <- function()
+{
+
 
 installpack <- function()
 {
@@ -117,17 +121,25 @@ loadlibreries <- function()
 }
 
 
+installpack()
+loadlibreries()
+library(shiny)
+url = a("Comune di Milano", href="https://dati.comune.milano.it/dataset")
+
+flat_ds2019= scraping("698a58e6-f276-44e1-92b1-3d2b81a4ad47")
+ds2019 = datacleaning(flat_ds2019)
+flat_ds2018 = scraping("ea80c691-74bd-4356-94b6-0f446f190c0b")
+
+ds2018 = datacleaning(flat_ds2018)
+flat_ds2017= scraping("a032a06e-24c2-4df1-ac83-d001e9ddc577")
+ds2017 =datacleaning(flat_ds2017)
+
+
+test =ds2019
 
     # Define UI for application
-    ui <- fluidPage(
-
-
-
-        titlePanel(
-          h1(
-      id="big-heading",
-             "Milan Pollution Analisys")),
-      tags$style(HTML("#backg{border:1px solid black;background-color:#ecf8f2; margin-bottom: 10px;} #navb{background-color:#49c5b6;color:#ffffff} #side{background-color:#f4f5f9;} #big-heading{ color: #4990c2; font-family: 'Raleway',sans-serif; font-size: 48px; font-weight: 600; line-height: 27px; margin: 0 0 10px;text-align:center;background-color:#ffffff;}")),
+    ui <- fluidPage(titlePanel(h1("Milan Pollution Analisys")),
+      #tags$style(HTML("#backg{border:1px solid black;background-color:#ecf8f2; margin-bottom: 10px;} #navb{background-color:#49c5b6;color:#ffffff} #side{background-color:#f4f5f9;} #big-heading{ color: #4990c2; font-family: 'Raleway',sans-serif; font-size: 48px; font-weight: 600; line-height: 27px; margin: 0 0 10px;text-align:center;background-color:#ffffff;}")),
 
         hr(),
         navbarPage( "Pollution Milan",
@@ -277,24 +289,7 @@ loadlibreries <- function()
            }
 
 
-    # Run the application
-    pollution <- function()
-    {
-      installpack()
-      loadlibreries()
-      library(shiny)
-      url = a("Comune di Milano", href="https://dati.comune.milano.it/dataset")
 
-      flat_ds2019= scraping("698a58e6-f276-44e1-92b1-3d2b81a4ad47")
-      ds2019 = datacleaning(flat_ds2019)
-      flat_ds2018 = scraping("ea80c691-74bd-4356-94b6-0f446f190c0b")
-
-      ds2018 = datacleaning(flat_ds2018)
-      flat_ds2017= scraping("a032a06e-24c2-4df1-ac83-d001e9ddc577")
-      ds2017 =datacleaning(flat_ds2017)
-
-
-      test =ds2019
       shiny::shinyApp(ui = ui, server = server)
 
     }
