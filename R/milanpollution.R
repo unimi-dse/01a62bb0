@@ -13,9 +13,9 @@
 
 installpack <- function()
 {
-    packages  =c("shiny","ggplot2","forecast","xts","ckanr","httr","jsonlite","tidyverse","plotly","TSplotly")
+   packages  =c("shiny","ggplot2","forecast","xts","ckanr","httr","jsonlite","tidyverse","plotly","TSplotly")
     if (length(setdiff(packages, rownames(installed.packages()))) > 0) {
-        install.packages(setdiff(packages, rownames(installed.packages())))
+        install.packages(setdiff(packages, rownames(installed.packages())),repos = "http://cran.us.r-project.org")
     }
 }
 
@@ -193,6 +193,8 @@ milanpollution <- function()
         tabPanel(id="side","Stations",
                  sidebarLayout(
                      sidebarPanel( id="side",
+
+                        h1("Number of active stations"),
                          textOutput("stations_info"),
                          hr(),
                          br(),
@@ -218,7 +220,7 @@ milanpollution <- function()
     server <- function(input, output) {
 
         output$stations_info <- renderText({
-            paste("For the year",
+            paste("In the year",
             input$years, "and there were", length(stazioni_clean(checkyears(input$years, TRUE))$station_id), "active stations.")
         })
         output$stations_plot <- renderPlotly(
@@ -294,8 +296,8 @@ milanpollution <- function()
     shinyApp(ui = ui, server = server)
 }
 
- #re
 
-#milanpollution()
+
+milanpollution()
 
 
