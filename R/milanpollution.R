@@ -11,9 +11,6 @@
 #https://www.makeareadme.com/
 
 
-# Run the application
-pollution <- function()
-{ shiny::shinyApp(ui = ui, server = server)}
 installpack <- function()
 {
    packages  =c("shiny","ggplot2","forecast","xts","ckanr","httr","jsonlite","tidyverse","plotly","TSplotly")
@@ -119,21 +116,7 @@ loadlibreries <- function()
     require(TSplotly)
 }
 
-installpack()
-loadlibreries()
-library(shiny)
-url = a("Comune di Milano", href="https://dati.comune.milano.it/dataset")
 
-flat_ds2019= scraping("698a58e6-f276-44e1-92b1-3d2b81a4ad47")
-ds2019 = datacleaning(flat_ds2019)
-flat_ds2018 = scraping("ea80c691-74bd-4356-94b6-0f446f190c0b")
-
-ds2018 = datacleaning(flat_ds2018)
-flat_ds2017= scraping("a032a06e-24c2-4df1-ac83-d001e9ddc577")
-ds2017 =datacleaning(flat_ds2017)
-
-
-    test =ds2019
 
     # Define UI for application
     ui <- fluidPage(
@@ -294,6 +277,27 @@ ds2017 =datacleaning(flat_ds2017)
            }
 
 
+    # Run the application
+    pollution <- function()
+    {
+      installpack()
+      loadlibreries()
+      library(shiny)
+      url = a("Comune di Milano", href="https://dati.comune.milano.it/dataset")
+
+      flat_ds2019= scraping("698a58e6-f276-44e1-92b1-3d2b81a4ad47")
+      ds2019 = datacleaning(flat_ds2019)
+      flat_ds2018 = scraping("ea80c691-74bd-4356-94b6-0f446f190c0b")
+
+      ds2018 = datacleaning(flat_ds2018)
+      flat_ds2017= scraping("a032a06e-24c2-4df1-ac83-d001e9ddc577")
+      ds2017 =datacleaning(flat_ds2017)
+
+
+      test =ds2019
+      shiny::shinyApp(ui = ui, server = server)
+
+    }
 
 
 #pollution()
