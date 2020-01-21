@@ -141,11 +141,13 @@ pollution <- function()
   test =ds2019
 
   # Define UI for application
-  ui <- fluidPage(titlePanel(h1("Milan Pollution Analisys")),
-                  tags$style(HTML("html*{font-family: Arial;} p {font-size:16px;font-family:Arial} h1{text-align: center;} #backg{border:1px solid gray;background-color:#ecf8f2; margin-bottom: 10px;} #navb{background-color:#49c5b6;color:#ffffff} #side{background-color:#f4f5f9;border:1px solid gray;} #big-heading{ color: #4990c2; font-family: 'Raleway',sans-serif; font-size: 48px; font-weight: 600; line-height: 27px; margin: 0 0 10px;text-align:center;background-color:#ffffff;}")),
+  ui <- fluidPage( id= "all",
+    titlePanel(h1("Milan Pollution Analisys",id="testa")),
+                  tags$style(HTML("html*{font-family: Arial;} #all{background-color:rgb(174, 211, 254,0.2);} p {font-size:16px;font-family:Arial} h1{text-align: center;} .navbar-default .navbar-brand {
+                         background-color: #2F4F4F;color: #ffffff;}  .navbar-default .navbar-brand:hover{ background-color: #2F4F4F;color: #ffffff;} .navbar-default{background-color: #8FBC8F;color: #ffffff;} .navbar > .container-fluid >  ul li.active a:not( :hover ){background-color:#4990c2;color:#ffffff;} .navbar > .container-fluid >  ul li a:hover{background-color:#4990c2;color:#ffffff;} .navbar > .container-fluid >  ul li a{background-color:#8FBC8F;color:#ffffff;} .navbar > .container-fluid >  ul li.active a{background-color:#4990c2;color:#ffffff;} .navbar > .container-fluid >  ul li.active a:hover{background-color:#4990c2;color:#ffffff;} #backg{border:1px solid gray;background-color:#ecf8f2; margin-bottom: 10px;  border-radius: 25px;} .div_container-fluid{background-color:#49c5b6;color:#ffffff} #side{background-color:#f4f5f9;border:1px solid gray;} #testa{ color: #4990c2; font-family: 'Raleway',sans-serif; font-size: 48px; font-weight: 600; line-height: 80px; width:100%;margin: 0 0 10px;text-align:center;background-color:#ffffff;}")),
 
                   hr(),
-                  navbarPage( "Pollution Milan",
+                  navbarPage(  "Pollution Milan",
                               tabPanel("Pollution",
 
                                        sidebarLayout(
@@ -196,7 +198,11 @@ pollution <- function()
                                          sidebarPanel( id="side",
 
                                                        h1("Number of active stations"),
-                                                       textOutput("stations_info"),
+                                                       hr(),
+
+                                                       htmlOutput("stations_info"),
+                                                       htmlOutput("stations_active"),
+
                                                        hr(),
                                                        selectInput("yearstation",
                                                                    label = "Select the year",
@@ -226,7 +232,7 @@ pollution <- function()
                                                        h1("Author"),
                                                        hr(),
                                                        h2("Andrea Ierardi"),
-                                                       tags$img(src="https://avatars0.githubusercontent.com/u/36515398?s=460&v=4", width = "200px", height = "200px"),
+                                                       tags$img(src="https://avatars0.githubusercontent.com/u/36515398?s=460&v=4", width = "150px", height = "150px"),
                                                        hr(),
                                                        h2("Studies"),
 
@@ -274,7 +280,11 @@ pollution <- function()
 
     output$stations_info <- renderText({
       paste("In the year",
-            input$yearstation, "there were", length(stazioni_clean(checkyears(input$yearstation, TRUE))$station_id), "active stations.")
+            input$yearstation, "there were", length(stazioni_clean(checkyears(input$yearstation, TRUE))$station_id), "active stations.","<br>","The active station were: ")
+      })
+
+    output$stations_active <- renderText({
+      paste(stazioni_clean(checkyears(input$yearstation, TRUE))$station_id)
     })
     output$stations_plot <- renderPlotly(
       {
@@ -346,10 +356,10 @@ pollution <- function()
 
 
 
-  shinyApp(ui = ui, server = server)
+  shinyApp(ui = ui, server = server )
 
 }
 
 #to start the application
-#pollution()
+pollution()
 
