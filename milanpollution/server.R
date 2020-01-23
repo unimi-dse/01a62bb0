@@ -22,7 +22,7 @@
 #}
 
 #shinyApp(ui = shinyUI, server = shinyServer)
-shiny::runApp()
+shiny::runApp("milanpollution")
 #pollution <- function()
 #{
 #    shiny::runApp("milanpollution")
