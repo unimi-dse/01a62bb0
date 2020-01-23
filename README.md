@@ -26,7 +26,9 @@ require(milanpollution)
 
 <br>
  <code> pollution()</code>
-  <p> This function loads the Shiny  application. </p>
+ <br>
+<code>  shiny::runApp("milanpollution")</code> 
+<p> This function loads the Shiny  application. </p>
   
   <br>
  
