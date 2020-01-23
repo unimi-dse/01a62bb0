@@ -69,38 +69,6 @@ datacleaning <- function(leggo)
     return (test)
 }
 
-checkyears  <- function(year, flat)
-{
-
-    if(flat)
-    {
-        if(year=="2019")
-        {
-            return(flat_ds2019)
-        }
-        if(year=="2018")
-        {
-            return(flat_ds2018)
-        }
-        if(year=="2017")
-        {
-            return(flat_ds2017)
-        }
-    }
-    if(year=="2019")
-    {
-        return(ds2019)
-    }
-    if(year=="2018")
-    {
-        return(ds2018)
-    }
-    if(year=="2017")
-    {
-        return(ds2017)
-    }
-
-}
 
 
 #installpack()
