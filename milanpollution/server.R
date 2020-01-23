@@ -73,14 +73,13 @@ datacleaning <- function(leggo)
 #flat_ds2017= scraping("a032a06e-24c2-4df1-ac83-d001e9ddc577")
 #ds2017 =datacleaning(flat_ds2017)
 
-shiny::runApp("milanpollution")
 
-#pollution <- function()
-#{
-#    shiny::runApp("milanpollution")
-#    shinyApp(ui = shinyUI, server = shinyServer)
+pollution <- function()
+{
+    shiny::runApp("milanpollution")
+    shinyApp(ui = shinyUI, server = shinyServer)
 
-#}
+}
 
 #test =ds2019
 shinyServer(function(input, output) {
