@@ -9,6 +9,7 @@
 
 
 
+'%>%'  <- magrittr::`%>%`
 
 url = a("Comune di Milano", href="https://dati.comune.milano.it/dataset")
 
@@ -61,10 +62,10 @@ shiny::shinyUI(fluidPage( id= "all",
 
                                                        h1("Plot results"),
                                                        hr(),
-                                                       plotly::plotlyOutput('Timeseries'),
+                                                       plotly::plotlyOutput('Timeseries')%>% shinycssloaders::withSpinner(color="#0dc5c1"),
                                                        br(),
                                                        hr(),
-                                                       plotly::plotlyOutput("Forecast"),
+                                                       plotly::plotlyOutput("Forecast")%>% shinycssloaders::withSpinner(color="#0dc5c1"),
                                                        br(),
 
                                              )
@@ -79,8 +80,8 @@ shiny::shinyUI(fluidPage( id= "all",
                                                            h1("Number of active stations"),
                                                            hr(),
 
-                                                           htmlOutput("stations_info"),
-                                                           htmlOutput("stations_active"),
+                                                           htmlOutput("stations_info")%>% shinycssloaders::withSpinner(color="#0dc5c1"),
+                                                           htmlOutput("stations_active")%>% shinycssloaders::withSpinner(color="#0dc5c1"),
 
                                                            hr(),
                                                            selectInput("yearstation",
@@ -100,7 +101,7 @@ shiny::shinyUI(fluidPage( id= "all",
                                              mainPanel(id="backg",
                                                        h1("Plot results"),
                                                        hr(),
-                                                       plotly::plotlyOutput("stations_plot"),
+                                                       plotly::plotlyOutput("stations_plot")%>% shinycssloaders::withSpinner(color="#0dc5c1"),
                                                        br(),
                                              ))
 

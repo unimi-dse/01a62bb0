@@ -9,10 +9,6 @@
 
 
 '%>%'  <- magrittr::`%>%`
-pollution <- function()
-{
-    shiny:runApp("milanpollution")
-}
 
 
 #installpack <- function()
@@ -111,32 +107,59 @@ checkyears  <- function(year, flat)
 
 
 
-flat_ds2019= scraping("698a58e6-f276-44e1-92b1-3d2b81a4ad47")
-ds2019 = datacleaning(flat_ds2019)
+#flat_ds2019= scraping("698a58e6-f276-44e1-92b1-3d2b81a4ad47")
+#ds2019 = datacleaning(flat_ds2019)
 
-flat_ds2018 = scraping("ea80c691-74bd-4356-94b6-0f446f190c0b")
+#flat_ds2018 = scraping("ea80c691-74bd-4356-94b6-0f446f190c0b")
 
-ds2018 = datacleaning(flat_ds2018)
-flat_ds2017= scraping("a032a06e-24c2-4df1-ac83-d001e9ddc577")
-ds2017 =datacleaning(flat_ds2017)
+#ds2018 = datacleaning(flat_ds2018)
+#flat_ds2017= scraping("a032a06e-24c2-4df1-ac83-d001e9ddc577")
+#ds2017 =datacleaning(flat_ds2017)
 
 
 
-test =ds2019
+#test =ds2019
 shinyServer(function(input, output) {
+
+
+    test <- reactive({
+        if (input$years == "2019")
+            test = datacleaning(scraping("698a58e6-f276-44e1-92b1-3d2b81a4ad47"))
+        else if (input$years == "2018")
+            test = datacleaning(scraping("ea80c691-74bd-4356-94b6-0f446f190c0b"))
+
+        else if(input$years=="2017")
+            test = datacleaning(scraping("a032a06e-24c2-4df1-ac83-d001e9ddc577"))
+        else
+            stop("Unexpected dataset")
+    })
+
+    df <- reactive({
+        if (input$yearstation == "2019")
+            df = scraping("698a58e6-f276-44e1-92b1-3d2b81a4ad47")
+        else if (input$yearstation == "2018")
+            df = scraping("ea80c691-74bd-4356-94b6-0f446f190c0b")
+
+        else if(input$yearstation =="2017")
+            df = scraping("a032a06e-24c2-4df1-ac83-d001e9ddc577")
+        else
+            stop("Unexpected dataset")
+    })
+
     output$stations_info <- renderText({
         paste("In the year",
-              input$yearstation, "there were", length(stazioni_clean(checkyears(input$yearstation, TRUE))$station_id), "active stations.","<br>","The active station were: ")
+              input$yearstation, "there were", length(stazioni_clean(df())$station_id), "active stations.","<br>","The active station were: ")
     })
 
     output$stations_active <- renderText({
-        paste(stazioni_clean(checkyears(input$yearstation, TRUE))$station_id)
+        paste(stazioni_clean(df())$station_id)
     })
     output$stations_plot <-plotly::renderPlotly(
         {
 
-            flat =  checkyears(input$yearstation, TRUE)
-            df =  stazioni_clean(flat)
+            #flat =  checkyears(input$yearstation, TRUE)
+            #flat = df()
+            df =  stazioni_clean(df())
 
            plotly::plot_ly(df,
                     x = df$station_id,
@@ -153,8 +176,8 @@ shinyServer(function(input, output) {
 
 
 
-
-        test = checkyears(input$years, FALSE)
+        test= test()
+        #test = checkyears(input$years, FALSE)
         # Render timeseries plot
         inp = input$pollutant
 
@@ -183,7 +206,7 @@ shinyServer(function(input, output) {
 
     output$Forecast<-plotly::renderPlotly({
 
-        test = checkyears(input$years,FALSE)
+        test= test()
 
         inp = input$pollutant
         poll = subset(test,subset= inquinante==inp)
@@ -199,4 +222,10 @@ shinyServer(function(input, output) {
 
 })
 
+pollution <- function()
+{
+    shiny::runApp("milanpollution")
+    shinyApp(ui = shinyUI, server = shinyServer)
+
+}
 
