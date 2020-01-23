@@ -1,7 +1,7 @@
 # 01a62bb0
 
 <h1 align="center">Milan pollution Shiny App </h1>
-<p> The aim of this project is the analysis of the data taken from the site of the Comune di Milano using CKAN Data Application programming interface(API). </p>
+<p> The aim of this project is to analysis the datas from the website of the Comune di Milano. In particular, the study is focussed on the different pollutants detected during the years from ARPA's stations. 
 <br>
 <h2> Installation</h2>
 
@@ -29,6 +29,14 @@ require(milanpollution)
   <p> This function loads the Shiny  application. </p>
   
   <br>
+ 
+ <h2> Technologies </h2>
+ 
+- shiny App for the User Interface with other library of data visualization.
+- CKAN Data Application programming interface(API) to import datas directly from the openData Milano webasite.
+- R language
+
+<br>
  <h2> Description of the application </h2>
 <p> When runned the pollution() function in the console, will be charged the application. It takes a bit to get and charge the data from the OpenData Comune di Milano site using CKAN API. Charged the dataset, the application will starts. </p>
 
