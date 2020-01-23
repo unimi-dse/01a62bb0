@@ -15,144 +15,144 @@ url = a("Comune di Milano", href="https://dati.comune.milano.it/dataset")
 
 # Define UI for application that draws a histogram
 shiny::shinyUI(fluidPage( id= "all",
-                   titlePanel(h1("Milan Pollution Analisys",id="testa")),
-                   tags$style(HTML("img {border: 1px solid gray;border-radius: 10px;}html*{font-family: Arial;} #all{background-color:rgb(174, 211, 254,0.2);} p {font-size:16px;font-family:Arial} h1{text-align: center;} .navbar-default .navbar-brand {
+                          titlePanel(h1("Milan Pollution Analisys",id="testa")),
+                          tags$style(HTML("img {border: 1px solid gray;border-radius: 10px;}html*{font-family: Arial;} #all{background-color:rgb(174, 211, 254,0.2);} p {font-size:16px;font-family:Arial} h1{text-align: center;} .navbar-default .navbar-brand {
                          background-color: #2F4F4F;color: #ffffff;}  .navbar-default .navbar-brand:hover{ background-color: #2F4F4F;color: #ffffff;} .navbar-default{background-color: #8FBC8F;color: #ffffff;border:solid 1px gray;} .navbar > .container-fluid >  ul li.active a:not( :hover ){background-color:#4990c2;color:#ffffff;} .navbar > .container-fluid >  ul li a:hover{background-color:#4990c2;color:#ffffff;} .navbar > .container-fluid >  ul li a{background-color:#8FBC8F;color:#ffffff;} .navbar > .container-fluid >  ul li.active a{background-color:#4990c2;color:#ffffff;} .navbar > .container-fluid >  ul li.active a:hover{background-color:#4990c2;color:#ffffff;} #backg{border:1px solid gray;background-color:#ecf8f2; margin-bottom: 10px;  border-radius: 25px;} .div_container-fluid{background-color:#49c5b6;color:#ffffff} #side{background-color:#f4f5f9;border:1px solid gray;} #testa{ color: #4990c2; font-family: 'Raleway',sans-serif; font-size: 48px; font-weight: 600; line-height: 80px; width:100%;margin: 0 0 10px;text-align:center;background-color:#ffffff;}")),
 
-                   hr(),
-                   navbarPage(  "Pollution Milan",
-                                tabPanel("Pollution",
+                          hr(),
+                          navbarPage(  "Pollution Milan",
+                                       tabPanel("Pollution",
 
-                                         sidebarLayout(
+                                                sidebarLayout(
 
-                                             sidebarPanel( id="side",
-                                                           # Dropdown menu for selecting variable from GE data.
-                                                           selectInput("pollutant",
-                                                                       label = "Select pollutant type",
-                                                                       choices = c("SO2","C6H6","CO_8h","NO2","O3","PM10","PM25","SO2"),
-                                                                       selected = "PM10"),
-                                                           # Default selection
-                                                           sliderInput("lag",
-                                                                       "Forecasting lags:",
-                                                                       min = 1,  max = 50, value = 10),
-
-
-                                                           br(),
-                                                           checkboxInput("regression", "Show Regression line", TRUE),
-                                                           hr(),
-
-                                                          hr(),
-
-                                                          selectInput("years",
-                                                                      label = "Select the year",
-                                                                      choices = c("2019","2018","2017"),
-                                                                      selected = "2019"),
-
-                                                           br(),
-
-                                                          helpText("Data from openData",url),
-                                                          tags$img(src="https://www.multivendorservice.it/wp-content/uploads/2018/07/comune-di-Milano.png", width = "100px", height = "50px",id="image"),
+                                                  sidebarPanel( id="side",
+                                                                # Dropdown menu for selecting variable from GE data.
+                                                                selectInput("pollutant",
+                                                                            label = "Select pollutant type",
+                                                                            choices = c("SO2","C6H6","CO_8h","NO2","O3","PM10","PM25","SO2"),
+                                                                            selected = "PM10"),
+                                                                # Default selection
+                                                                sliderInput("lag",
+                                                                            "Forecasting lags:",
+                                                                            min = 1,  max = 50, value = 10),
 
 
+                                                                br(),
+                                                                checkboxInput("regression", "Show Regression line", TRUE),
+                                                                hr(),
 
+                                                                hr(),
 
-                                             ),
+                                                                selectInput("years",
+                                                                            label = "Select the year",
+                                                                            choices = c("2019","2018","2017"),
+                                                                            selected = "2019"),
 
-                                             mainPanel(id="backg",
+                                                                br(),
 
-                                                       h1("Plot results"),
-                                                       hr(),
-                                                       plotly::plotlyOutput('Timeseries')%>% shinycssloaders::withSpinner(color="#0dc5c1"),
-                                                       br(),
-                                                       hr(),
-                                                       plotly::plotlyOutput("Forecast")%>% shinycssloaders::withSpinner(color="#0dc5c1"),
-                                                       br(),
-
-                                             )
-
-
-                                         ) ),
-
-                                tabPanel(id="side","Stations",
-                                         sidebarLayout(
-                                             sidebarPanel( id="side",
-
-                                                           h1("Number of active stations"),
-                                                           hr(),
-
-                                                           htmlOutput("stations_info")%>% shinycssloaders::withSpinner(color="#0dc5c1"),
-                                                           htmlOutput("stations_active")%>% shinycssloaders::withSpinner(color="#0dc5c1"),
-
-                                                           hr(),
-                                                           selectInput("yearstation",
-                                                                       label = "Select the year",
-                                                                       choices = c("2019","2018","2017"),
-                                                                       selected = "2019"),
-                                                           br(),
-
-
-                                                           helpText("Data from openData",url),
-                                                           tags$img(src="https://www.multivendorservice.it/wp-content/uploads/2018/07/comune-di-Milano.png", width = "100px", height = "50px",id="image"),
+                                                                helpText("Data from openData",url),
+                                                                tags$img(src="http://dati.comune.milano.it/uploads/group/2017-11-15-122315.733556MarchioComuneMilanoVerticale4Colori.png", width = "80px", height = "100px",id="image"),
 
 
 
-                                             ),
 
-                                             mainPanel(id="backg",
-                                                       h1("Plot results"),
-                                                       hr(),
-                                                       plotly::plotlyOutput("stations_plot")%>% shinycssloaders::withSpinner(color="#0dc5c1"),
-                                                       br(),
-                                             ))
+                                                  ),
 
-                                ),
-                                tabPanel("About", id = "side",
+                                                  mainPanel(id="backg",
 
-                                         sidebarLayout(
-                                             sidebarPanel( id="side",
+                                                            h1("Plot results"),
+                                                            hr(),
+                                                            plotly::plotlyOutput('Timeseries')%>% shinycssloaders::withSpinner(color="#0dc5c1"),
+                                                            br(),
+                                                            hr(),
+                                                            plotly::plotlyOutput("Forecast")%>% shinycssloaders::withSpinner(color="#0dc5c1"),
+                                                            br(),
 
-                                                           h1("Author"),
-                                                           hr(),
-                                                           h2("Andrea Ierardi"),
-                                                           tags$img(src="https://avatars0.githubusercontent.com/u/36515398?s=460&v=4", width = "150px", height = "150px"),
-                                                           hr(),
-                                                           h2("Studies"),
-
-                                                           p("MSc. Data Science and Economics student - Università degli studi di Milano."),
-                                                           p("Graduated in Computer Science - Università del Piemonte orientale(UPO)"),
-                                                           hr(),
-
-                                                           h2("Link"),
-                                                           a("LinkedIn", href="https://www.linkedin.com/in/andreaierardi/"),
-                                                           br(),
-                                                           a("Github",href="https://github.com/Andreaierardi")
+                                                  )
 
 
-                                             ),
+                                                ) ),
+
+                                       tabPanel(id="side","Stations",
+                                                sidebarLayout(
+                                                  sidebarPanel( id="side",
+
+                                                                h1("Number of active stations"),
+                                                                hr(),
+
+                                                                htmlOutput("stations_info")%>% shinycssloaders::withSpinner(color="#0dc5c1"),
+                                                                htmlOutput("stations_active")%>% shinycssloaders::withSpinner(color="#0dc5c1"),
+
+                                                                hr(),
+                                                                selectInput("yearstation",
+                                                                            label = "Select the year",
+                                                                            choices = c("2019","2018","2017"),
+                                                                            selected = "2019"),
+                                                                br(),
+
+
+                                                                helpText("Data from openData",url),
+                                                                tags$img(src="http://dati.comune.milano.it/uploads/group/2017-11-15-122315.733556MarchioComuneMilanoVerticale4Colori.png", width = "80px", height = "100px",id="image"),
 
 
 
-                                             mainPanel(id="backg",
-                                                       h1("About"),
-                                                       hr(),
-                                                       p("The aim of this project is the analysis of the data taken from the site of the Comune di Milano using CKAN Data Application programming interface(API)."),
-                                                       h2("Main page: Pollution"),
-                                                       p("In the main page are presented two plots: the time series of the datas and the related forecast."),
+                                                  ),
 
-                                                       tags$li("The first plot represents the time series of the data deteceted by every station day by day. It is possible to check the Checkbox to enable the visualization of the linear regression line."),
-                                                       tags$li("The second plot represents the forecast of the time series. It is possible to set a different lag for the forecast using the slidebar."),
-                                                       p("Then is possible to select the year of the dataset in interest using a selector."),
+                                                  mainPanel(id="backg",
+                                                            h1("Plot results"),
+                                                            hr(),
+                                                            plotly::plotlyOutput("stations_plot")%>% shinycssloaders::withSpinner(color="#0dc5c1"),
+                                                            br(),
+                                                  ))
 
-                                                       br(),
-                                                       h2("Second page: Stations"),
-                                                       p("In this page is possible to see the barplot representing the detected data from each station in the selected year."),
-                                                       br(),
-                                                       h2("Third page: About"),
-                                                       p("This section describes the aim of the project."),
-                                                       br()
+                                       ),
+                                       tabPanel("About", id = "side",
 
-                                             )
-                                         )
-                                )
-                   )
+                                                sidebarLayout(
+                                                  sidebarPanel( id="side",
+
+                                                                h1("Author"),
+                                                                hr(),
+                                                                h2("Andrea Ierardi"),
+                                                                tags$img(src="https://avatars0.githubusercontent.com/u/36515398?s=460&v=4", width = "150px", height = "150px"),
+                                                                hr(),
+                                                                h2("Studies"),
+
+                                                                p("MSc. Data Science and Economics student - Università degli studi di Milano."),
+                                                                p("Graduated in Computer Science - Università del Piemonte orientale(UPO)"),
+                                                                hr(),
+
+                                                                h2("Link"),
+                                                                a("LinkedIn", href="https://www.linkedin.com/in/andreaierardi/"),
+                                                                br(),
+                                                                a("Github",href="https://github.com/Andreaierardi")
+
+
+                                                  ),
+
+
+
+                                                  mainPanel(id="backg",
+                                                            h1("About"),
+                                                            hr(),
+                                                            p("The aim of this project is the analysis of the data taken from the site of the Comune di Milano using CKAN Data Application programming interface(API)."),
+                                                            h2("Main page: Pollution"),
+                                                            p("In the main page are presented two plots: the time series of the datas and the related forecast."),
+
+                                                            tags$li("The first plot represents the time series of the data deteceted by every station day by day. It is possible to check the Checkbox to enable the visualization of the linear regression line."),
+                                                            tags$li("The second plot represents the forecast of the time series. It is possible to set a different lag for the forecast using the slidebar."),
+                                                            p("Then is possible to select the year of the dataset in interest using a selector."),
+
+                                                            br(),
+                                                            h2("Second page: Stations"),
+                                                            p("In this page is possible to see the barplot representing the detected data from each station in the selected year."),
+                                                            br(),
+                                                            h2("Third page: About"),
+                                                            p("This section describes the aim of the project."),
+                                                            br()
+
+                                                  )
+                                                )
+                                       )
+                          )
 ))

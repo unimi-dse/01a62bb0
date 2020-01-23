@@ -10,17 +10,6 @@
 
 '%>%'  <- magrittr::`%>%`
 
-
-#installpack <- function()
-#{
-#    packages  =c("shiny","ggplot2","forecast","xts","ckanr","httr","jsonlite","tidyverse","plotly","TSplotly")
-#    if (length(setdiff(packages, rownames(installed.packages()))) > 0) {
-#       install.packages(setdiff(packages, rownames(installed.packages())),repos = "http://cran.us.r-project.org")
-#    }
-#    shinyApp(ui = shinyUI, server = shinyServer)
-
-#}
-
 scraping <- function(id)
 {
     url <- paste0("http://dati.comune.milano.it/api/action/",
@@ -85,6 +74,12 @@ datacleaning <- function(leggo)
 #ds2017 =datacleaning(flat_ds2017)
 
 
+#pollution <- function()
+#{
+#    shiny::runApp("milanpollution")
+#    shinyApp(ui = shinyUI, server = shinyServer)
+
+#}
 
 #test =ds2019
 shinyServer(function(input, output) {
@@ -129,14 +124,14 @@ shinyServer(function(input, output) {
             #flat = df()
             df =  stazioni_clean(df())
 
-           plotly::plot_ly(df,
-                    x = df$station_id,
-                    y = df$total_detected,
-                    type = "bar",color =df$station_id
+            plotly::plot_ly(df,
+                            x = df$station_id,
+                            y = df$total_detected,
+                            type = "bar",color =df$station_id
             ) %>%
-               plotly::layout(title = paste("Number of detected datas from each station - year:",input$yearstation),
-                       xaxis = list(title = "Station ID"),
-                       yaxis = list(title = "Data detected"))
+                plotly::layout(title = paste("Number of detected datas from each station - year:",input$yearstation),
+                               xaxis = list(title = "Station ID"),
+                               yaxis = list(title = "Data detected"))
 
         })
 
@@ -155,20 +150,20 @@ shinyServer(function(input, output) {
         {
             fit <- lm( poll$valore ~ poll$data, data = poll)
 
-           plotly::plot_ly(x = poll$data, y = poll$valore, name ="values ",type = 'scatter',mode = 'line')%>%
-               plotly::layout(title = paste('Value of ',inp, "per day of ", input$years),
-                       xaxis = list(title = 'Days'),
-                       yaxis = list (title = paste('Value of ',inp))) %>%
-               plotly::add_lines(x = ~poll$data, y = fitted(fit), name="regression")
+            plotly::plot_ly(x = poll$data, y = poll$valore, name ="values ",type = 'scatter',mode = 'line')%>%
+                plotly::layout(title = paste('Value of ',inp, "per day of ", input$years),
+                               xaxis = list(title = 'Days'),
+                               yaxis = list (title = paste('Value of ',inp))) %>%
+                plotly::add_lines(x = ~poll$data, y = fitted(fit), name="regression")
 
         }
 
         else
         {
-        plotly::plot_ly(x = poll$data, y = poll$valore, name ="values ",type = 'scatter',mode = 'line')%>%
+            plotly::plot_ly(x = poll$data, y = poll$valore, name ="values ",type = 'scatter',mode = 'line')%>%
                 plotly::layout(title = paste('Value of ',inp, "per day of ", input$years),
-                       xaxis = list(title = 'Days'),
-                       yaxis = list (title = paste('Value of ',inp)))
+                               xaxis = list(title = 'Days'),
+                               yaxis = list (title = paste('Value of ',inp)))
         }
     })
 
@@ -190,10 +185,5 @@ shinyServer(function(input, output) {
 
 })
 
-pollution <- function()
-{
-    shiny::runApp("milanpollution")
-    shinyApp(ui = shinyUI, server = shinyServer)
 
-}
 
