@@ -21,6 +21,14 @@
 
 #}
 
+#shinyApp(ui = shinyUI, server = shinyServer)
+shiny::runApp()
+#pollution <- function()
+#{
+#    shiny::runApp("milanpollution")
+#    shinyApp(ui = shinyUI, server = shinyServer)
+
+#}
 scraping <- function(id)
 {
     url <- paste0("http://dati.comune.milano.it/api/action/",
@@ -189,12 +197,5 @@ shinyServer(function(input, output) {
 
 
 })
-shinyApp(ui = shinyUI, server = shinyServer)
 
-pollution <- function()
-{
-    shiny::runApp("milanpollution")
-    shinyApp(ui = shinyUI, server = shinyServer)
-
-}
 
