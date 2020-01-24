@@ -45,16 +45,20 @@ require(milanpollution)
 <h3> Main page: Pollution </h3>
 
 <p> In the main page are presented two plots: the time series representation and the forecast using the Autoregressive integrated moving average (ARIMA) model. 
- 
- ![Alt Text](https://raw.githubusercontent.com/unimi-dse/01a62bb0/master/img/mainpage.JPG)
+
 
   <li> The first chart is interactive and is possible to zoom in or select a portion of it thanks to the plotly package. This plot represents the time series of the data deteceted by every station day by day. It is possible to check the Checkbox to enable the visualization of the linear regression line.  </li>
-  
- ![Alt Text](https://raw.githubusercontent.com/unimi-dse/01a62bb0/master/img/mainpage2.JPG)
+   
+ ![Alt Text](https://raw.githubusercontent.com/unimi-dse/01a62bb0/master/img/mainpage.JPG)
+
 
 <br>
 
-  <li> The second chart(also interactive) represents the forecast of the time series. It is possible to set a different from 1 to 50 lags using the slidebar. </li>
+  <li> The second chart(also interactive) represents the forecast of the time series. It is possible to set a different from 1 to 50 lags using the slidebar. 
+  
+   ![Alt Text](https://raw.githubusercontent.com/unimi-dse/01a62bb0/master/img/mainpage2.JPG)
+   
+   </li>
   <br>
 
   <p> Then is possible to select the year of the dataset in interest using a selector on the left side of the window. As the application get the datas using the API the loading of the data speed up and there is no delay changing the year</p>
@@ -65,9 +69,9 @@ require(milanpollution)
 <p> In the second page is presented the barplot of the detected data from each station during the years. In the left panel is possible to select the year of interest using a selector and are also displayed how much and which station were active in that year.
  </p>
 
-![Alt Text](https://raw.githubusercontent.com/unimi-dse/01a62bb0/master/img/secondpage.JPG)
-
   <li>  In this page is possible to see the barplot(interactive) representing the number of total detected data from each station during the selected year. On the horizontal axis the are the station IDs on the vertical the detected data during the year. </li>
+
+![Alt Text](https://raw.githubusercontent.com/unimi-dse/01a62bb0/master/img/secondpage.JPG)
 
 <h3> Third page: About </h3>
 <p> This section describes the project and the author details. </p>
