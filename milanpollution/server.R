@@ -64,26 +64,33 @@ datacleaning <- function(leggo)
   return (test)
 }
 
-checkdataset <- function(year, pollutant)
+checkYears <- function(year)
 {
-
-  id <- switch(year,"2019" = "698a58e6-f276-44e1-92b1-3d2b81a4ad47" ,"2018"= "ea80c691-74bd-4356-94b6-0f446f190c0b","2017" =  "a032a06e-24c2-4df1-ac83-d001e9ddc577")
-
-  print(paste("id:" ,id))
-  print(paste("year", year))
-
   if(is.null(h[[year]])| is.null(h2[[year]]))
   {
+
+    id <- switch(year,"2019" = "698a58e6-f276-44e1-92b1-3d2b81a4ad47" ,"2018"= "ea80c691-74bd-4356-94b6-0f446f190c0b","2017" =  "a032a06e-24c2-4df1-ac83-d001e9ddc577")
+
     print(paste("scraping:" ,year))
 
     df = scraping(id)
     test = datacleaning(df)
+    h[[year]] = test
     h2[[year]]= stazioni_clean(df)
   }
+}
+checkdataset <- function(year, pollutant)
+{
+
+
+#  print(paste("id:" ,id))
+#  print(paste("year", year))
+
+  checkYears(year)
 
   if(!is.null(pollutant))
   {
-    print(paste("poll", pollutant))
+#    print(paste("poll", pollutant))
 
     test = h[[year]]
     test = subset(test,subset= test$inquinante==pollutant)
@@ -114,7 +121,7 @@ shinyServer(function(input, output) {
   #  if(input$years == "2019")
   #    id = "698a58e6-f276-44e1-92b1-3d2b81a4ad47"
   # else if(input$years=="2018")
-#  id= "ea80c691-74bd-4356-94b6-0f446f190c0b"
+  id= "ea80c691-74bd-4356-94b6-0f446f190c0b"
   #  else if (input$years=="2017")
   #    id = "a032a06e-24c2-4df1-ac83-d001e9ddc577"
   #  else
