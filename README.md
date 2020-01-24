@@ -40,7 +40,7 @@ require(milanpollution)
 
 <br>
  <h2> Description of the application </h2>
-<p> When runned the pollution() function in the console, will be charged the application. It takes a bit to get and charge the data from the OpenData Comune di Milano site using CKAN API. Charged the dataset, the application will starts. </p>
+<p> When runned the pollution() function in the console, the application will run. It takes a bit to get and load the data from the OpenData Comune di Milano website since the app is using CKAN API. In particular, it check the years 2017, 2018 and 2019 datasets. Also, for optimising the loading, the scraping function  is called the dataset is saved in the application. In this way is not necessary to download the data each time we load the dataset and the performance of the application are greater. </p>
 
 <h3> Main page: Pollution </h3>
 #--- put IMAGE ---
