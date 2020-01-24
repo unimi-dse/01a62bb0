@@ -45,23 +45,22 @@ require(milanpollution)
 <h3> Main page: Pollution </h3>
 
 <p> In the main page are presented two plots: the time series of the datas and the related forecast. 
+ 
  ![Alt Text](https://raw.githubusercontent.com/unimi-dse/01a62bb0/master/img/mainpage.JPG)
 
-![Image] (https://raw.githubusercontent.com/unimi-dse/01a62bb0/master/img/mainpage.JPG)
   <li> The first plot represents the time series of the data deteceted by every station day by day. It is possible to check the Checkbox to enable the visualization of the linear regression line. </li>
   
  ![Alt Text](https://raw.githubusercontent.com/unimi-dse/01a62bb0/master/img/mainpage2.JPG)
 
-![Image] (https://raw.githubusercontent.com/unimi-dse/01a62bb0/master/img/mainpage2.JPG)
 
   <li> The second plot represents the forecast of the time series. It is possible to set a different lag for the forecast using the slidebar. </li>
   <p> Then is possible to select the year of the dataset in interest using a selector </p>
 </p>
 
 <h3> Second page: Stations </h3>
+
 ![Alt Text](https://raw.githubusercontent.com/unimi-dse/01a62bb0/master/img/secondpage.JPG)
 
-![Image] (https://raw.githubusercontent.com/unimi-dse/01a62bb0/master/img/secondpage.JPG)
 <p> In this page is possible to see the barplot representing the detected data from each station in the selected year. </p>
 
 <h3> Third page: About </h3>
