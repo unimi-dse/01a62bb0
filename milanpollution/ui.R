@@ -16,21 +16,19 @@ url = a("Comune di Milano", href="https://dati.comune.milano.it/dataset")
 #                          #all{background-color:rgb(174, 211, 254,0.2);background: #fff url(https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/01-big-clm-citylife-milan-image-by-big-bjarke-ingels-group-1574091716.jpg) repeat right;}
 
 
-#                           background: url(https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/01-big-clm-citylife-milan-image-by-big-bjarke-ingels-group-1574091716.jpg) no-repeat center center fixed;
+#                           background: url(https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/01-big-clm-citylife-milan-image-by-big-bjarke-ingels-group-1574091716.jpg) no-repeat center fixed;
 
 # Define UI for application that draws a histogram
 shiny::shinyUI(fluidPage(
   div(titlePanel(h1("MILAN POLLUTION ANALYSIS",id="testa"))),
   tags$style(HTML("
                           html, body {  font-size:20px;margin: 0; height: 100%;
+  background: url(https://raw.githubusercontent.com/unimi-dse/01a62bb0/master/img/background2.jpg) no-repeat center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
                           }
-                          #all { background-image: url(https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/01-big-clm-citylife-milan-image-by-big-bjarke-ingels-group-1574091716.jpg) no-repeat center center fixed;);
-    background-color: rgba(255,255,255,0.6);
-    background-blend-mode: lighten}
 
                           img {border: 1px solid gray;border-radius: 10px;}
                           html*{height:100%;font-family: Arial;overflow:auto;}
@@ -48,24 +46,22 @@ shiny::shinyUI(fluidPage(
                          #side{background-color: rgb(244,245,249,0.85);border:1px solid gray;}
 
                          #testa{
-	margin: 0.5em 0 0.2em 0;
-	font-weight: 100;
+	margin: 0px 0px 0px 0px;
+	font-weight: 50;
 	font-family: 'Titillium Web', sans-serif;
 	position: relative;
 	font-size: 75px;
-	line-height: 40px;
-	padding: 15px 15px 15px 15%;
-	color: gray;
+	color: #05386B;
 	box-shadow:
 		inset 0 0 0 1px rgba(53,86,129, 0.4),
 		inset 0 0 5px rgba(53,86,129, 0.5),
 		inset -285px 0 35px white;
 	border-radius: 0 10px 0 10px;
-	background: #fff url(https://png.pngtree.com/thumb_back/fw800/back_our/20190622/ourmid/pngtree-green-minimalist-medical-nurses-day-banner-background-image_223622.jpg) repeat center ;
+	background: #fff url(https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/01-1579117277.jpg?crop=1.00xw:1.00xh;0,0&resize=2048) repeat center ;
 }")),
   hr(),
 
-  div(id="all",
+  div(
       navbarPage(  "Pollution Milan",
                    tabPanel("Pollution",
 
