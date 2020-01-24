@@ -64,6 +64,7 @@ require(milanpollution)
 
 <p> In the second page is presented the barplot of the detected data from each station during the years. In the left panel is possible to select the year of interest using a selector and are also displayed how much and which station were active in that year.
  </p>
+
 ![Alt Text](https://raw.githubusercontent.com/unimi-dse/01a62bb0/master/img/secondpage.JPG)
 
   <li>  In this page is possible to see the barplot(interactive) representing the number of total detected data from each station during the selected year. On the horizontal axis the are the station IDs on the vertical the detected data during the year. </li>
