@@ -46,12 +46,12 @@ require(milanpollution)
 
 <p> In the main page are presented two plots: the time series of the datas and the related forecast. 
  ![GitHub Logo](/img/mainpage.jpg)
-Format: ![Alt Text](url)
+Format: ![Alt Text](/img/mainpage.jpg)
 
   <li> The first plot represents the time series of the data deteceted by every station day by day. It is possible to check the Checkbox to enable the visualization of the linear regression line. </li>
   
   ![GitHub Logo](/img/mainpage2.jpg)
-Format: ![Alt Text](url)
+Format: ![Alt Text](/img/mainpage2.jpg)
 
   <li> The second plot represents the forecast of the time series. It is possible to set a different lag for the forecast using the slidebar. </li>
   <p> Then is possible to select the year of the dataset in interest using a selector </p>
