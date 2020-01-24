@@ -15,9 +15,24 @@ url = a("Comune di Milano", href="https://dati.comune.milano.it/dataset")
 
 # Define UI for application that draws a histogram
 shiny::shinyUI(fluidPage( id= "all",
-                          titlePanel(h1("Milan Pollution Analisys",id="testa")),
-                          tags$style(HTML("img {border: 1px solid gray;border-radius: 10px;}html*{font-family: Arial;} #all{background-color:rgb(174, 211, 254,0.2);} p {font-size:16px;font-family:Arial} h1{text-align: center;} .navbar-default .navbar-brand {
-                         background-color: #2F4F4F;color: #ffffff;}  .navbar-default .navbar-brand:hover{ background-color: #2F4F4F;color: #ffffff;} .navbar-default{background-color: #8FBC8F;color: #ffffff;border:solid 1px gray;} .navbar > .container-fluid >  ul li.active a:not( :hover ){background-color:#4990c2;color:#ffffff;} .navbar > .container-fluid >  ul li a:hover{background-color:#4990c2;color:#ffffff;} .navbar > .container-fluid >  ul li a{background-color:#8FBC8F;color:#ffffff;} .navbar > .container-fluid >  ul li.active a{background-color:#4990c2;color:#ffffff;} .navbar > .container-fluid >  ul li.active a:hover{background-color:#4990c2;color:#ffffff;} #backg{border:1px solid gray;background-color:#ecf8f2; margin-bottom: 10px;  border-radius: 25px;} .div_container-fluid{background-color:#49c5b6;color:#ffffff} #side{background-color:#f4f5f9;border:1px solid gray;} #testa{ color: #4990c2; font-family: 'Raleway',sans-serif; font-size: 48px; font-weight: 600; line-height: 80px; width:100%;margin: 0 0 10px;text-align:center;background-color:#ffffff;}")),
+                          div(titlePanel(h1("MILAN POLLUTION ANALYSIS",id="testa"))),
+                          tags$style(HTML("img {border: 1px solid gray;border-radius: 10px;}html*{font-family: Arial;} #all{background-color:rgb(174, 211, 254,0.2);background: #fff url(https://ladisillusionecom.files.wordpress.com/2019/10/pollution-power-station.jpg) repeat right;background-opacity: 0.2} #cent{text-align:center;} p {font-size:16px;font-family:Arial} h1{text-align: center;} .navbar-default .navbar-brand {
+                         background-color: #2F4F4F;color: #ffffff;}  .navbar-default .navbar-brand:hover{ background-color: #2F4F4F;color: #ffffff;} .navbar-default{background-color: #8FBC8F;color: #ffffff;border:solid 1px gray;} .navbar > .container-fluid >  ul li.active a:not( :hover ){background-color:#4990c2;color:#ffffff;} .navbar > .container-fluid >  ul li a:hover{background-color:#4990c2;color:#ffffff;} .navbar > .container-fluid >  ul li a{background-color:#8FBC8F;color:#ffffff;} .navbar > .container-fluid >  ul li.active a{background-color:#4990c2;color:#ffffff;} .navbar > .container-fluid >  ul li.active a:hover{background-color:#4990c2;color:#ffffff;} #backg{border:1px solid gray;background-color:#ecf8f2; margin-bottom: 10px;  border-radius: 25px;} .div_container-fluid{background-color:#49c5b6;color:#ffffff} #side{background-color:#f4f5f9;border:1px solid gray;} #testa{
+	margin: 1em 0 0.5em 0;
+	font-weight: 600;
+	font-family: 'Titillium Web', sans-serif;
+	position: relative;
+	font-size: 45px;
+	line-height: 40px;
+	padding: 15px 15px 15px 15%;
+	color: #ffffff;
+	box-shadow:
+		inset 0 0 0 1px rgba(53,86,129, 0.4),
+		inset 0 0 5px rgba(53,86,129, 0.5),
+		inset -285px 0 35px white;
+	border-radius: 0 10px 0 10px;
+	background: #fff url(https://ladisillusionecom.files.wordpress.com/2019/10/pollution-power-station.jpg) repeat right ;
+}")),
 
                           hr(),
                           navbarPage(  "Pollution Milan",
@@ -113,8 +128,8 @@ shiny::shinyUI(fluidPage( id= "all",
 
                                                                 h1("Author"),
                                                                 hr(),
-                                                                h2("Andrea Ierardi"),
-                                                                tags$img(src="https://avatars0.githubusercontent.com/u/36515398?s=460&v=4", width = "150px", height = "150px"),
+                                                                h2("Andrea Ierardi",id="cent"),
+                                                                div(id="cent",img(tags$img(src="https://avatars0.githubusercontent.com/u/36515398?s=460&v=4", width = "150px", height = "150px"))),
                                                                 hr(),
                                                                 h2("Studies"),
 
