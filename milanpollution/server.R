@@ -121,11 +121,11 @@ shinyServer(function(input, output) {
     })
 
    df <- reactive({
-       if(input$years == "2019")
+       if(input$yearstation == "2019")
            id = "698a58e6-f276-44e1-92b1-3d2b81a4ad47"
-       else if(input$years=="2018")
+       else if(input$yearstation=="2018")
            id= "ea80c691-74bd-4356-94b6-0f446f190c0b"
-       else if (input$years=="2017")
+       else if (input$yearstation=="2017")
            id = "a032a06e-24c2-4df1-ac83-d001e9ddc577"
        else
             stop("Dataset ID not found")
