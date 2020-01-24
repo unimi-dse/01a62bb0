@@ -9,7 +9,7 @@
 
 
 '%>%'  <- magrittr::`%>%`
-
+#CRAN zoo
 
 #installpack <- function()
 #{
@@ -92,35 +92,61 @@ datacleaning <- function(leggo)
 #flat_ds2017= scraping("a032a06e-24c2-4df1-ac83-d001e9ddc577")
 #ds2017 =datacleaning(flat_ds2017)
 
-
-
+h = hash::hash()
+h2 = hash::hash()
 #test =ds2019
 shinyServer(function(input, output) {
 
 
     test <- reactive({
-        if (input$years == "2019")
-            test = datacleaning(scraping("698a58e6-f276-44e1-92b1-3d2b81a4ad47"))
-        else if (input$years == "2018")
-            test = datacleaning(scraping("ea80c691-74bd-4356-94b6-0f446f190c0b"))
 
-        else if(input$years=="2017")
-            test = datacleaning(scraping("a032a06e-24c2-4df1-ac83-d001e9ddc577"))
+        if(input$years == "2019")
+            id = "698a58e6-f276-44e1-92b1-3d2b81a4ad47"
+        else if(input$years=="2018")
+            id= "ea80c691-74bd-4356-94b6-0f446f190c0b"
+        else if (input$years=="2017")
+            id = "a032a06e-24c2-4df1-ac83-d001e9ddc577"
         else
-            stop("Unexpected dataset")
+            stop("Dataset ID not found")
+
+        if(is.null(h[[input$years]]))
+        {
+
+            test = datacleaning(scraping(id))
+            h[[input$years]] = test
+        }
+
+        test = h[[input$years]]
+
     })
 
-    df <- reactive({
-        if (input$yearstation == "2019")
-            df = scraping("698a58e6-f276-44e1-92b1-3d2b81a4ad47")
-        else if (input$yearstation == "2018")
-            df = scraping("ea80c691-74bd-4356-94b6-0f446f190c0b")
+   df <- reactive({
+       if(input$years == "2019")
+           id = "698a58e6-f276-44e1-92b1-3d2b81a4ad47"
+       else if(input$years=="2018")
+           id= "ea80c691-74bd-4356-94b6-0f446f190c0b"
+       else if (input$years=="2017")
+           id = "a032a06e-24c2-4df1-ac83-d001e9ddc577"
+       else
+            stop("Dataset ID not found")
+       if(is.null(h2[[input$yearstation]]))
+       {
 
-        else if(input$yearstation =="2017")
-            df = scraping("a032a06e-24c2-4df1-ac83-d001e9ddc577")
-        else
-            stop("Unexpected dataset")
-    })
+           df = scraping(id)
+           h2[[input$yearstation]] = df
+       }
+
+       df = h2[[input$yearstation]]
+})
+   #         df = scraping("698a58e6-f276-44e1-92b1-3d2b81a4ad47")
+    #    else if (input$years == "2018")
+     #       df = scraping("ea80c691-74bd-4356-94b6-0f446f190c0b")
+
+     #   else if(input$years =="2017")
+      #      df = scraping("a032a06e-24c2-4df1-ac83-d001e9ddc577")
+       # else
+        #    stop("Unexpected dataset")
+#    })
 
     output$stations_info <- renderText({
         paste("In the year",

@@ -1,7 +1,7 @@
 # 01a62bb0
 
 <h1 align="center">Milan pollution Shiny App </h1>
-<p> The aim of this project is to analysis the datas from the website of the Comune di Milano. In particular, the study is focussed on the different pollutants detected during the years from ARPA's stations. 
+<p> The aim of this project is to analysise the datas from the website of the Comune di Milano. In particular, the study is focused on the different pollutants detected during the years from ARPA's stations. 
 <br>
 <h2> Installation</h2>
 
