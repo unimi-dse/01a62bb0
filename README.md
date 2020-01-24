@@ -69,4 +69,4 @@ require(milanpollution)
   <li>  In this page is possible to see the barplot(interactive) representing the number of total detected data from each station during the selected year. On the horizontal axis the are the station IDs on the vertical the detected data during the year. </li>
 
 <h3> Third page: About </h3>
-<p> This section describes the aim of the project. </p>
+<p> This section describes the project and the author details. </p>
