@@ -43,15 +43,23 @@ require(milanpollution)
 <p> When runned the pollution() function in the console, the application will run. It takes a bit to load the data from the OpenData Comune di Milano website since the app is using CKAN API. In particular, it checks the years 2017, 2018 and 2019 datasets. Also, to optimise the loading, the scraping function after getting the informations, the dataset is saved in the application memory. In this way, is not necessary to download the data each time we select the dataset of interest and the performance are better.</p>
 
 <h3> Main page: Pollution </h3>
-#--- put IMAGE ---
+
 <p> In the main page are presented two plots: the time series of the datas and the related forecast. 
+ ![GitHub Logo](/img/mainpage.jpg)
+Format: ![Alt Text](url)
+
   <li> The first plot represents the time series of the data deteceted by every station day by day. It is possible to check the Checkbox to enable the visualization of the linear regression line. </li>
+  
+  ![GitHub Logo](/img/mainpage2.jpg)
+Format: ![Alt Text](url)
+
   <li> The second plot represents the forecast of the time series. It is possible to set a different lag for the forecast using the slidebar. </li>
   <p> Then is possible to select the year of the dataset in interest using a selector </p>
 </p>
 
 <h3> Second page: Stations </h3>
-#--- put IMAGE ---
+![GitHub Logo](/img/secondpage.jpg)
+Format: ![Alt Text](url)
 <p> In this page is possible to see the barplot representing the detected data from each station in the selected year. </p>
 
 <h3> Third page: About </h3>
