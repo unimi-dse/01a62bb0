@@ -4,8 +4,7 @@ Title: Milan Pollution Analysis
 Version: 1.0.0
 Author: Andrea Ierard
 Maintainer: Andrea Ierardi <andreierardi@gmail.com>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: Analysise the datas from the website of the Comune di Milano of different pollutants detected during the years from ARPA's stations. 
 Imports: shiny, ggplot2, forecast, xts, ckanr, httr, jsonlite, tidyverse, plotly, TSplotly,shinycssloaders,hash
 License: What license is it under?
 Type: Shiny
