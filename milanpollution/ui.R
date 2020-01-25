@@ -50,7 +50,7 @@ shiny::shinyUI(fluidPage(
 	font-weight: 50;
 	font-family: 'Titillium Web', sans-serif;
 	position: relative;
-	font-size: 75px;
+	font-size: 60px;
 	color: #05386B;
 	box-shadow:
 		inset 0 0 0 1px rgba(53,86,129, 0.4),
@@ -78,10 +78,7 @@ shiny::shinyUI(fluidPage(
                                                         "Forecasting lags:",
                                                         min = 1,  max = 50, value = 10),
 
-
-                                            br(),
                                             checkboxInput("regression", "Show Regression line", TRUE),
-                                            hr(),
 
                                             hr(),
 
@@ -90,7 +87,6 @@ shiny::shinyUI(fluidPage(
                                                         choices = c("2019","2018","2017"),
                                                         selected = "2019"),
 
-                                            br(),
 
                                             helpText("Data from openData",url),
                                             tags$img(src="http://dati.comune.milano.it/uploads/group/2017-11-15-122315.733556MarchioComuneMilanoVerticale4Colori.png", width = "80px", height = "100px",id="image"),
