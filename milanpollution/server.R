@@ -70,9 +70,6 @@ checkYears <- function(year)
   {
 
     id <- switch(year,"2019" = "698a58e6-f276-44e1-92b1-3d2b81a4ad47" ,"2018"= "ea80c691-74bd-4356-94b6-0f446f190c0b","2017" =  "a032a06e-24c2-4df1-ac83-d001e9ddc577")
-
-    print(paste("scraping:" ,year))
-
     df = scraping(id)
     test = datacleaning(df)
     h[[year]] = test
