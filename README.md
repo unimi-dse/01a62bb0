@@ -61,7 +61,7 @@ require(milanpollution)
    </li>
   <br>
 
-  <p> Then is possible to select the year of the dataset in interest using a selector on the left side of the window. As the application get the datas using the API the loading of the data speed up and there is no delay changing the year</p>
+  <p> Then is possible to select the year of the dataset in interest using a selector on the left side of the window. As the application get the datas using the API the loading of the data speed up and there is no delay changing the year.</p>
 
 
 <h3> Second page: Stations </h3>
