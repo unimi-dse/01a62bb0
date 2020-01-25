@@ -32,6 +32,8 @@ shiny::shinyUI(fluidPage(
 
                           img {border: 1px solid gray;border-radius: 10px;}
                           html*{height:100%;font-family: Arial;overflow:auto;}
+                          p {font-family: Arial;}
+                          li {font-family: Arial;font-size:16px}
                           #cent{text-align:center;} p {font-size:16px;font-family:Arial}
                           h1{text-align: center;}
                           .navbar-default .navbar-brand { background-color: rgb(47,79,79,0.8);color: #ffffff;}
@@ -173,20 +175,18 @@ shiny::shinyUI(fluidPage(
                               mainPanel(id="backg",
                                         h1("About"),
                                         hr(),
-                                        p("The aim of this project is the analysis of the data taken from the site of the Comune di Milano using CKAN Data Application programming interface(API)."),
+                                        p("The aim of this project is to analysise the datas from the website of the Comune di Milano. In particular, the study is focused on the different pollutants detected during the years from ARPA's stations."),
                                         h2("Main page: Pollution"),
-                                        p("In the main page are presented two plots: the time series of the datas and the related forecast."),
+                                        p("In the main page are presented two plots: the time series representation and the forecast using the Autoregressive integrated moving average (ARIMA) model."),
 
-                                        tags$li("The first plot represents the time series of the data deteceted by every station day by day. It is possible to check the Checkbox to enable the visualization of the linear regression line."),
-                                        tags$li("The second plot represents the forecast of the time series. It is possible to set a different lag for the forecast using the slidebar."),
-                                        p("Then is possible to select the year of the dataset in interest using a selector."),
+                                        tags$li("The first chart is interactive and is possible to zoom in or select a portion of it thanks to the plotly package. This plot represents the time series of the data deteceted by every station day by day. It is possible to check the Checkbox to enable the visualization of the linear regression line."),
+                                        tags$li("The second chart(also interactive) represents the forecast of the time series. It is possible to set a different from 1 to 50 lags using the slidebar."),
+                                        p("Then is possible to select the year of the dataset in interest using a selector on the left side of the window. As the application get the datas using the API the loading of the data speed up and there is no delay changing the year."),
 
-                                        br(),
                                         h2("Second page: Stations"),
-                                        p("In this page is possible to see the barplot representing the detected data from each station in the selected year."),
-                                        br(),
+                                        p("In this page is possible to see the barplot(interactive) representing the number of total detected data from each station during the selected year. On the horizontal axis the are the station IDs on the vertical the detected data during the year."),
                                         h2("Third page: About"),
-                                        p("This section describes the aim of the project."),
+                                        p(" This section describes the project and the author details."),
                                         br()
 
                               )

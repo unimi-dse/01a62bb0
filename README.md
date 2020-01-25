@@ -75,3 +75,5 @@ require(milanpollution)
 
 <h3> Third page: About </h3>
 <p> This section describes the project and the author details. </p>
+
+![Alt Text](https://raw.githubusercontent.com/unimi-dse/01a62bb0/master/img/thirdpage.JPG)
