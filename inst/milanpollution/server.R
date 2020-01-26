@@ -242,3 +242,5 @@ shinyServer(function(input, output) {
 })
 
 
+# Create Shiny app ----
+shiny::shinyApp(ui = shinyUI, server = shinyServer)
