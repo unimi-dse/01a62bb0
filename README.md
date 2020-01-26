@@ -34,7 +34,7 @@ require(milanpollution)
  
  <h2> Technologies </h2>
  
-- shiny App for the User Interface with other library of data visualization.
+- shiny App for the User Interface with other libraries of data visualization.
 - CKAN Data Application programming interface(API) to import datas directly from the openData Milano webasite.
 - R language
 
