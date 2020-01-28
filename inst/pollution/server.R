@@ -7,8 +7,7 @@
 #    http://shiny.rstudio.com/
 #
 
-
-'%>%'  <- magrittr::`%>%`
+#' @importFrom magrittr %>%
 #CRAN zoo
 
 
