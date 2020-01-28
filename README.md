@@ -18,7 +18,7 @@ devtools::install_github('unimi-dse/01a62bb0')
 require(milanpollution)
 ```
 
-<p> There only one function in the package that are <code> pollution()</code> </p>
+<p> There is only one exported function in the package that are <code> pollution()</code> </p>
   
  <h3> Functions </h3>
 <br>
