@@ -10,7 +10,7 @@
 #' @importFrom magrittr %>%
 #CRAN zoo
 
-
+'%>%'  <- magrittr::`%>%`
 h = hash::hash()
 h2 = hash::hash()
 
