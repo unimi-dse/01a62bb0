@@ -27,7 +27,6 @@ require(milanpollution)
 <br>
  <code> pollution()</code>
  <br>
- <code> shiny::runGitHub("unimi-dse/01a62bb0",subdir="milanpollution") </code>
   <p> This function loads the Shiny  application. </p>
   
   <br>
