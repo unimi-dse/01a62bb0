@@ -18,12 +18,9 @@ devtools::install_github('unimi-dse/01a62bb0')
 require(milanpollution)
 ```
 
-<p> There are two main functions of the package that are <code> pollution()</code> and <code> installpack()</code>. </p>
+<p> There only one function in the package that are <code> pollution()</code> </p>
   
  <h3> Functions </h3>
- <code> installpack()</code>
- <p>This function will install the needed packages to run the application. <bold> It is suggested </bold> to run this function before the <italic> pollution() </italic> function. </p>
-
 <br>
  <code> pollution()</code>
  <br>
