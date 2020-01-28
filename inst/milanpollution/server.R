@@ -247,13 +247,3 @@ shinyServer(function(input, output) {
   # Create Shiny app ----
 #  shiny::shinyApp(ui = shinyUI, server = shinyServer)
 #}
-
-#' @export
-pollution <- function() {
-  dir <- system.file("pollution", package = "milanpollution")
-  if (dir == "") {
-    stop("Could not find pollution. Try re-installing `mypackage`.", call. = FALSE)
-  }
-
-  shiny::runApp(dir, display.mode = "normal")
-}
