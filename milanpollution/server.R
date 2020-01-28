@@ -242,5 +242,9 @@ shinyServer(function(input, output) {
 })
 
 
-# Create Shiny app ----
-shiny::shinyApp(ui = shinyUI, server = shinyServer)
+pollution <- function()
+{
+  # Create Shiny app ----
+  shiny::shinyApp(ui = shinyUI, server = shinyServer)
+}
+
