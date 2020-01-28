@@ -15,7 +15,7 @@ url = a("Comune di Milano", href="https://dati.comune.milano.it/dataset")
 
 
 # Define UI for application that draws a histogram
-shiny::shinyUI(fluidPage( theme= "stylesheet.css",
+shiny::shinyUI(fluidPage( theme= "style.css",
 
 
   div(titlePanel(h1("MILAN POLLUTION ANALYSIS",id="testa"))),
@@ -50,7 +50,7 @@ shiny::shinyUI(fluidPage( theme= "stylesheet.css",
 
 
                                             helpText("Data from openData",url),
-                                            tags$img(src="http://dati.comune.milano.it/uploads/group/2017-11-15-122315.733556MarchioComuneMilanoVerticale4Colori.png", width = "80px", height = "100px",id="image"),
+                                            tags$img(src="milan.png", width = "80px", height = "100px",id="image"),
 
 
 
@@ -91,7 +91,7 @@ shiny::shinyUI(fluidPage( theme= "stylesheet.css",
 
 
                                             helpText("Data from openData",url),
-                                            tags$img(src="http://dati.comune.milano.it/uploads/group/2017-11-15-122315.733556MarchioComuneMilanoVerticale4Colori.png", width = "80px", height = "100px",id="image"),
+                                            tags$img(src="milan.png", width = "80px", height = "100px",id="image"),
 
 
 
@@ -113,7 +113,7 @@ shiny::shinyUI(fluidPage( theme= "stylesheet.css",
                                             h1("Author"),
                                             hr(),
                                             h2("Andrea Ierardi",id="cent"),
-                                            div(id="cent",img(tags$img(src="https://avatars0.githubusercontent.com/u/36515398?s=460&v=4", width = "150px", height = "150px"))),
+                                            div(id="cent",img(tags$img(src="linkedin.jpg", width = "150px", height = "150px"))),
                                             hr(),
                                             h2("Studies"),
 
@@ -134,16 +134,21 @@ shiny::shinyUI(fluidPage( theme= "stylesheet.css",
                               mainPanel(id="backg",
                                         h1("About"),
                                         hr(),
-                                        p("The aim of this project is to analysise the datas from the website of the Comune di Milano. In particular, the study is focused on the different pollutants detected during the years from ARPA's stations."),
+                                        p("The aim of this project is to analysise the datas regarding pollution in Milan from the website of the Comune di Milano. In particular, the study is focused on the different pollutants detected during the years from ARPA's stations."),
                                         h2("Main page: Pollution"),
-                                        p("In the main page are presented two plots: the time series representation and the forecast using the Autoregressive integrated moving average (ARIMA) model."),
+                                        p("In the main page are presented two plots: the time series representation and the forecast calcolated on the Autoregressive integrated moving average (ARIMA) model."),
 
-                                        tags$li("The first chart is interactive and is possible to zoom in or select a portion of it thanks to the plotly package. This plot represents the time series of the data deteceted by every station day by day. It is possible to check the Checkbox to enable the visualization of the linear regression line."),
-                                        tags$li("The second chart(also interactive) represents the forecast of the time series. It is possible to set a different from 1 to 50 lags using the slidebar."),
-                                        p("Then is possible to select the year of the dataset in interest using a selector on the left side of the window. As the application get the datas using the API the loading of the data speed up and there is no delay changing the year."),
+                                        tags$li("The first chart is interactive and it is possible to zoom in or to select a portion of it thanks to the Plotly package. This plot represents the time series of the data deteceted day by day by every station. Checking the Checkbox is possible to enable the visualization of the linear regression line of the time series."),
+                                        tags$li("The second chart(also interactive) represents the forecast of the time series. Using the slidebar, is possible to set the lags of the forecast from 1 to 50 units. "),
+                                        p("Using a selector in the left side of the window, is possible to select the year of interest in the dataset. As the application receives the data with the API, the loading of the dataset speed up and there is no much delay changing the year."),
+                                        hr(),
 
                                         h2("Second page: Stations"),
-                                        p("In this page is possible to see the barplot(interactive) representing the number of total detected data from each station during the selected year. On the horizontal axis the are the station IDs on the vertical the detected data during the year."),
+                                        p("In the second page is presented the barplot of the detected data from each station during the years. Using a selector in the left panel of the page, is possible to select the year of interest in which you are interested in displaying how much and which station were active in that year."),
+                                        tags$li("In this page is possible to see the barplot(interactive) representing the number of total detected data from each station during the selected year. On the horizontal axis the are the station IDs on the vertical the detected data during the year."),
+
+                                         hr(),
+
                                         h2("Third page: About"),
                                         p(" This section describes the project and the author details."),
                                         br()

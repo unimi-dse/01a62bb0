@@ -19,5 +19,5 @@ pollution <- function() {
     stop("Could not find pollution. Try re-installing `mypackage`.", call. = FALSE)
   }
 
-  shiny::runApp(dir, display.mode = "normal")
+  shiny::runApp(dir, display.mode = "normal", launch.browser = T)
 }
