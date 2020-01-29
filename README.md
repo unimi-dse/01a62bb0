@@ -1,7 +1,7 @@
 # 01a62bb0
 
 <h1 align="center">Milan pollution Shiny App </h1>
-<p> The aim of this project is to analysise the datas regarding pollution in Milan from the website of the Comune di Milano. In particular, the study is focused on the different pollutants detected during the years from ARPA's stations. 
+<p> The aim of this project is to analysise the datas regarding pollution in Milan from the website of the Comune di Milano. In particular, the study is focused on the different pollutants detected during the years from ARPA stations. 
 <br>
 <h2> Installation</h2>
 
@@ -10,14 +10,12 @@
 devtools::install_github('unimi-dse/01a62bb0')
 ```
 
-<br>
 <h2> Usage</h2>
 <p> Load the package. </p>
 
 ```R
 require(milanpollution)
 ```
-
 <p> There are three exported function in the package that are <code> pollution()</code>, <code> restfullAPI()</code> and <code> checkdataset()</code></p>
 
 <h3> Functions </h3>
@@ -28,7 +26,8 @@ require(milanpollution)
 <code> restfullAPI()</code>
 <p> Get the dataset from the Opendata website of the city of Milan using CRAN API. </p>
 
-<code> checkdataset()</code><p> Check whether and which dataset is already loaded, download and visualise it. </p>
+<code> checkdataset()</code>
+<p> Check whether and which dataset is already loaded, download and visualise it.</p>
 
 <h2> Dataset </h2>
 <p> The study comprehends 3 dataset named "Rilevazione qualità dell'aria" (Air Quality Detection) from years 2017 to 2019. 
@@ -38,7 +37,7 @@ The dataset derived from the city of Milan website, in particular the <a href= "
 - Date: date of the detected value
 - Pollutant: type of pollutant
 - Value: value of the pollutant
-- Station_id: station ID that detect the value.
+- Station_id: ID of the ARPA station.
 
 <h2> Technologies </h2>
 
@@ -82,6 +81,7 @@ The dataset derived from the city of Milan website, in particular the <a href= "
 ![Alt Text](https://raw.githubusercontent.com/unimi-dse/01a62bb0/master/img/secondpage.JPG)
 
 <h3> Third page: About </h3>
-<p> This section describes the project and the author details. </p>
+<p> This section describes the project and the author details. 
+</p>
 
 ![Alt Text](https://raw.githubusercontent.com/unimi-dse/01a62bb0/master/img/thirdpage.JPG)
