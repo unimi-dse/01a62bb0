@@ -8,7 +8,7 @@
 #' The second part is the stations information. Will be presented the plot of the datas taken from each ARPA station during the selected year.
 #' The last part is the "about" in which will be described the project and the author.
 
-#' @return
+#' @return shiny app
 #' @export
 #'
 #' @examples
@@ -16,7 +16,7 @@
 pollution <- function() {
   dir <- system.file("pollution", package = "milanpollution")
   if (dir == "") {
-    stop("Could not find pollution. Try re-installing `mypackage`.", call. = FALSE)
+    stop("Could not find pollution. Try re-installing `milanpollution`.", call. = FALSE)
   }
 
   shiny::runApp(dir, display.mode = "normal", launch.browser = T)

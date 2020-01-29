@@ -7,7 +7,7 @@
 pollution()
 }
 \value{
-
+shiny app
 }
 \description{
 Run Milan pollution Sciny app.

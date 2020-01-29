@@ -18,7 +18,7 @@ url = a("Comune di Milano", href="https://dati.comune.milano.it/dataset")
 shiny::shinyUI(fluidPage( theme= "style.css",
 
 
-  div(titlePanel(windowTitle="Milan pollutio",h1("MILAN POLLUTION ANALYSIS",id="testa"))),
+  div(titlePanel(windowTitle="Milan pollution",h1("MILAN POLLUTION ANALYSIS",id="testa"))),
 
   hr(),
 
