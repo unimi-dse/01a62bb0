@@ -20,13 +20,13 @@ require(milanpollution)
 
 <h3> Functions </h3>
 <br>
--<code> pollution()</code>
+<li><code> pollution()</code></li>
 <br>
 <p> This function loads the Shiny  application. </p>
--<code> restfullAPI()</code>
+<li><code> restfullAPI()</code></li>
 <p> Get the dataset from the Opendata website of the city of Milan using CRAN API. </p>
 
--<code> checkdataset()</code>
+<li><code> checkdataset()</code></li>
 <p> Check whether and which dataset is already loaded, download and visualise it.</p>
 
 <h2> Dataset </h2>
