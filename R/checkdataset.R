@@ -1,6 +1,6 @@
 #' Checkdataset
 #'
-#' Check which and whether the dataset is already loaded, download and visualise it.
+#' Check whether and which dataset is already loaded, download and visualise it.
 #' If the dataset is loaded, then get that from an \code{hash}, if not loaded then call \code{\link{restfullAPI}} and upload the \code{hash}
 #'
 #' @param year character. The year of the dataset to check

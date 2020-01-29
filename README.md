@@ -18,7 +18,7 @@ devtools::install_github('unimi-dse/01a62bb0')
 require(milanpollution)
 ```
 
-<p> There is only one exported function in the package that are <code> pollution()</code> </p>
+<p> There are three exported function in the package that are <code> pollution()</code> <code> restfullAPI()</code> <code> checkdataset()</code></p>
   
  <h3> Functions </h3>
 <br>
@@ -27,7 +27,15 @@ require(milanpollution)
   <p> This function loads the Shiny  application. </p>
   
   <br>
- 
+ <code> restfullAPI()</code>
+ <br>
+  <p> Get the dataset from the Opendata website of the city of Milan using CRAN API. </p>
+  
+  <code> checkdataset()</code>
+ <br>
+  <p> Check whether and which dataset is already loaded, download and visualise it. </p>
+  
+  
  <h2> Technologies </h2>
  
 - Shiny App for the User Interface with other data visualization libraries.
