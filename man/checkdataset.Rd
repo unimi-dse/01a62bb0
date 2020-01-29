@@ -15,7 +15,8 @@ checkdataset(year, pollutant)
 data.frame
 }
 \description{
-Check which dataset download and visualise
+Check which and whether the dataset is already loaded, download and visualise it.
+If the dataset is loaded, then get that from an \code{hash}, if not loaded then call \code{\link{restfullAPI}} and upload the \code{hashs}
 }
 \examples{
 \dontrun{

@@ -12,9 +12,8 @@
 #' @export
 #'
 #' @examples
-#' #' \dontrun{
 #' pollution()
-#' }
+#'
 #'
 pollution <- function() {
   dir <- system.file("pollution", package = "milanpollution")

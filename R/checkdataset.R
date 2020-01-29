@@ -1,6 +1,7 @@
 #' Checkdataset
 #'
-#' Check which dataset download and visualise
+#' Check which and whether the dataset is already loaded, download and visualise it.
+#' If the dataset is loaded, then get that from an \code{hash}, if not loaded then call \code{\link{restfullAPI}} and upload the \code{hashs}
 #'
 #' @param year character. The year of the dataset to check
 #' @param pollutant character. The name of the pollutant to check. if \code{NULL} (the default) means we are checking the dataset for the stations
@@ -18,14 +19,12 @@ checkdataset <- function(year, pollutant)
 {
 
 
-  #  print(paste("id:" ,id))
-  #  print(paste("year", year))
-
+  #check if the year is already loaded
   checkYears(year)
 
+  #If pollutant is not NULL, then are requested dataset for timeseries(page 1)
   if(!is.null(pollutant))
   {
-    #    print(paste("poll", pollutant))
 
     test = h[[year]]
     test = subset(test,subset= test$inquinante==pollutant)
@@ -35,7 +34,7 @@ checkdataset <- function(year, pollutant)
 
   }
 
-
+  #else pollutant is NULL, then are requested dataset for stations info(page 2)
   else
   {
     df = h2[[year]]
@@ -43,9 +42,12 @@ checkdataset <- function(year, pollutant)
   }
 
 }
+
 h = hash::hash()
 h2 = hash::hash()
 
+
+#Check if dataset is already loaded
 checkYears <- function(year)
 {
   if(is.null(h[[year]])| is.null(h2[[year]]))
@@ -59,6 +61,7 @@ checkYears <- function(year)
   }
 }
 
+#Clean the dataset for time series
 datacleaning <- function(leggo)
 {
   Data = leggo
@@ -73,6 +76,7 @@ datacleaning <- function(leggo)
   return (test)
 }
 
+#Clean the dataset for station infos
 station_clean <- function(file)
 {
   file$valore = as.double(file$valore)

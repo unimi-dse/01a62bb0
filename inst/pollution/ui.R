@@ -15,26 +15,42 @@ url = a("Comune di Milano", href="https://dati.comune.milano.it/dataset")
 
 
 # Define UI for application that draws a histogram
-shiny::shinyUI(fluidPage( theme= "style.css",
+shiny::shinyUI(fluidPage(
+                          #-- Load CSS --
+                          theme= "style.css",
 
-
+                          #-- Div for the title panel --
                           div(titlePanel(windowTitle="Milan pollution",h1("MILAN POLLUTION ANALYSIS",id="testa"))),
 
                           hr(),
 
+                          #--  Div for the body --
                           div(
+
+
+                            #-- Navbar ---
                             navbarPage(  "Pollution Milan",
+
+
+                                         #---- Navbar page #1 ----
                                          tabPanel("Pollution",
 
                                                   sidebarLayout(
 
+                                                    # ---- side Panel #1 ----
+
+
+                                                    #Default slider for forecast
+
                                                     sidebarPanel( id="side",
-                                                                  # Dropdown menu for selecting variable from GE data.
+
+                                                                  # Dropdown menu for selecting pollutant
                                                                   selectInput("pollutant",
                                                                               label = "Select pollutant type",
                                                                               choices = c("SO2","C6H6","CO_8h","NO2","O3","PM10","PM25","SO2"),
                                                                               selected = "PM10"),
-                                                                  # Default selection
+
+                                                                  # Default slider for forecast
                                                                   sliderInput("lag",
                                                                               "Forecasting lags:",
                                                                               min = 1,  max = 50, value = 10),
@@ -43,6 +59,7 @@ shiny::shinyUI(fluidPage( theme= "style.css",
 
                                                                   hr(),
 
+                                                                  # Dropdown menu for selecting the year of interest
                                                                   selectInput("years",
                                                                               label = "Select the year",
                                                                               choices = c("2019","2018","2017"),
@@ -53,9 +70,9 @@ shiny::shinyUI(fluidPage( theme= "style.css",
                                                                   tags$img(src="milan.png", width = "80px", height = "100px",id="image"),
 
 
-
-
                                                     ),
+
+                                                    # ---- Main Panel #1 ----
 
                                                     mainPanel(id="backg",
 
@@ -72,8 +89,13 @@ shiny::shinyUI(fluidPage( theme= "style.css",
 
                                                   ) ),
 
+
+                                         #---- Navbar page #2 ----
                                          tabPanel(id="side","Stations",
                                                   sidebarLayout(
+
+                                                    # ---- side Panel #2----
+
                                                     sidebarPanel( id="side",
 
                                                                   h1("Number of active stations"),
@@ -97,6 +119,8 @@ shiny::shinyUI(fluidPage( theme= "style.css",
 
                                                     ),
 
+                                                    # ---- Main Panel ----
+
                                                     mainPanel(id="backg",
                                                               h1("Plot results"),
                                                               hr(),
@@ -105,9 +129,16 @@ shiny::shinyUI(fluidPage( theme= "style.css",
                                                     ))
 
                                          ),
+
+
+
+                                         #---- Navbar page #3 ----
                                          tabPanel("About", id = "side",
 
                                                   sidebarLayout(
+
+                                                    # ---- side Panel #3 ----
+
                                                     sidebarPanel( id="side",
 
                                                                   h1("Author"),
@@ -129,7 +160,7 @@ shiny::shinyUI(fluidPage( theme= "style.css",
 
                                                     ),
 
-
+                                                    # ---- Main Panel #3 ----
 
                                                     mainPanel(id="backg",
                                                               h1("About"),

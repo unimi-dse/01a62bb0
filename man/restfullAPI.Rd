@@ -16,7 +16,6 @@ data.frame
 Get the dataset from the Opendata website of the city of Milan using CRAN API.
 }
 \examples{
-\dontrun{
 restfullAPI(id)
-}
+
 }

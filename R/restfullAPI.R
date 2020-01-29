@@ -6,9 +6,8 @@
 #' @return data.frame
 #'
 #' @examples
-#' \dontrun{
 #' restfullAPI(id)
-#' }
+#'
 #' @export
 #'
 restfullAPI <- function(id = NULL)
