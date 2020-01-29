@@ -2,18 +2,20 @@
 % Please edit documentation in R/checkdataset.R
 \name{checkdataset}
 \alias{checkdataset}
-\title{Check dataset to upload}
+\title{Checkdataset}
 \usage{
 checkdataset(year, pollutant)
 }
 \arguments{
-\item{pollutant}{}
+\item{year}{character. The year of the dataset to check}
+
+\item{pollutant}{character. The name of the pollutant to check. if \code{NULL} (the default) means we are checking the dataset for the stations}
 }
 \value{
-
+data.frame
 }
 \description{
-Check dataset to upload
+Check which dataset download and visualise
 }
 \examples{
 \dontrun{
