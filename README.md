@@ -77,7 +77,7 @@ The dataset is imported from the city of Milan website, in particular the <a hre
 ![Alt Text](https://raw.githubusercontent.com/unimi-dse/01a62bb0/master/img/secondpage.JPG)
 </li>
 <h3> Third page: About </h3>
-<p> This section describes the project and the author details. 
-</p>
+<li>This section describes the project and the author details. 
 
 ![Alt Text](https://raw.githubusercontent.com/unimi-dse/01a62bb0/master/img/thirdpage.JPG)
+</li>
