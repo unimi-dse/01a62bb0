@@ -18,32 +18,36 @@ devtools::install_github('unimi-dse/01a62bb0')
 require(milanpollution)
 ```
 
-<p> There are three exported function in the package that are <code> pollution()</code> <code> restfullAPI()</code> <code> checkdataset()</code></p>
-  
- <h3> Functions </h3>
+<p> There are three exported function in the package that are <code> pollution()</code>, <code> restfullAPI()</code> and <code> checkdataset()</code></p>
+
+<h3> Functions </h3>
 <br>
- <code> pollution()</code>
- <br>
-  <p> This function loads the Shiny  application. </p>
-  
-  <br>
- <code> restfullAPI()</code>
- <br>
-  <p> Get the dataset from the Opendata website of the city of Milan using CRAN API. </p>
-  
-  <code> checkdataset()</code>
- <br>
-  <p> Check whether and which dataset is already loaded, download and visualise it. </p>
-  
-  
- <h2> Technologies </h2>
- 
+<code> pollution()</code>
+<br>
+<p> This function loads the Shiny  application. </p>
+<code> restfullAPI()</code>
+<p> Get the dataset from the Opendata website of the city of Milan using CRAN API. </p>
+
+<code> checkdataset()</code>
+<p> Check whether and which dataset is already loaded, download and visualise it. </p>
+
+<h2> Dataset </h2>
+<p> The study comprehends 3 dataset named "Rilevazione qualità dell'aria" (Air Quality Detection) from years 2017 to 2019. 
+The dataset derived from the city of Milan website, in particular the <a href= "http://dati.comune.milano.it/" Opendata Portal.</a> </p>
+<p> The datasets has 3 fields: </p>
+- Date: date of the detected value
+- Pollutant: type of pollutant
+- Value: value of the pollutant
+- Station_id: station ID that detect the value.
+
+<h2> Technologies </h2>
+
 - Shiny App for the User Interface with other data visualization libraries.
 - CKAN Data Application programming interface(API) to import datas directly from the openData Milano website.
 - R language
 
 <br>
- <h2> Description of the application </h2>
+<h2> Description of the application </h2>
 <p> When launched the pollution() function in the console, the application will start. It takes a bit to load the data from the OpenData Comune di Milano website since the app is using CKAN API. In particular, it checks the years 2017, 2018 and 2019 datasets. After the scraping function downloads the dataset and saved the data in the application memory. In this way, is not necessary to download the data each time we select the year of interest and the general performance are better. </p>
 
 <h3> Main page: Pollution </h3>
@@ -51,29 +55,29 @@ require(milanpollution)
 <p> In the main page are presented two plots: the time series representation and the forecast calcolated on the Autoregressive integrated moving average (ARIMA) model. 
 
 
-  <li> The first chart is interactive and it is possible to zoom in or to select a portion of it thanks to the Plotly package. This plot represents the time series of the data deteceted day by day by every station. Checking the Checkbox is possible to enable the visualization of the linear regression line of the time series.  </li>
-   
- ![Alt Text](https://raw.githubusercontent.com/unimi-dse/01a62bb0/master/img/mainpage.JPG)
+<li> The first chart is interactive and it is possible to zoom in or to select a portion of it thanks to the Plotly package. This plot represents the time series of the data deteceted day by day by every station. Checking the Checkbox is possible to enable the visualization of the linear regression line of the time series.  </li>
+
+![Alt Text](https://raw.githubusercontent.com/unimi-dse/01a62bb0/master/img/mainpage.JPG)
 
 
 <br>
 
-  <li> The second chart(also interactive) represents the forecast of the time series. Using the slidebar, is possible to set the lags of the forecast from 1 to 50 units. 
-  
-   ![Alt Text](https://raw.githubusercontent.com/unimi-dse/01a62bb0/master/img/mainpage2.JPG)
-   
-   </li>
-  <br>
+<li> The second chart(also interactive) represents the forecast of the time series. Using the slidebar, is possible to set the lags of the forecast from 1 to 50 units. 
 
-  <p> Using a selector in the left side of the window, is possible to select the year of interest in the dataset. As the application receives the data with the API, the loading of the dataset speed up and there is no much delay changing the year.</p>
+![Alt Text](https://raw.githubusercontent.com/unimi-dse/01a62bb0/master/img/mainpage2.JPG)
+
+</li>
+<br>
+
+<p> Using a selector in the left side of the window, is possible to select the year of interest in the dataset. As the application receives the data with the API, the loading of the dataset speed up and there is no much delay changing the year.</p>
 
 
 <h3> Second page: Stations </h3>
 
 <p> In the second page is presented the barplot of the detected data from each station during the years. Using a selector in the left panel of the page, is possible to select the year of interest in which you are interested in displaying how much and which station were active in that year.
- </p>
+</p>
 
-  <li>  In this page is possible to see the barplot(interactive) representing the number of total detected data from each station during the selected year. On the horizontal axis the are the station IDs on the vertical the detected data during the year. </li>
+<li>  In this page is possible to see the barplot(interactive) representing the number of total detected data from each station during the selected year. On the horizontal axis the are the station IDs on the vertical the detected data during the year. </li>
 
 ![Alt Text](https://raw.githubusercontent.com/unimi-dse/01a62bb0/master/img/secondpage.JPG)
 
