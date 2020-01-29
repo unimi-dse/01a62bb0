@@ -34,6 +34,7 @@ require(milanpollution)
 <p> The study comprehends 3 dataset named "Rilevazione qualità dell'aria" (Air Quality Detection) from years 2017 to 2019. 
 The dataset derived from the city of Milan website, in particular the <a href= "http://dati.comune.milano.it/"> Opendata Portal.</a> </p>
 <p> The datasets has 3 fields: </p>
+
 - Date: date of the detected value
 - Pollutant: type of pollutant
 - Value: value of the pollutant
