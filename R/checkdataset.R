@@ -10,12 +10,11 @@
 #'
 #' @export
 #' @examples
-#' \dontrun{
 #' checkdataset(year, pollutant)
-#' }
 #'
 #'
-checkdataset <- function(year, pollutant)
+#'
+checkdataset <- function(year, pollutant = NULL)
 {
 
 
