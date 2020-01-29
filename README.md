@@ -19,7 +19,6 @@ require(milanpollution)
 <p> There are three exported function in the package that are <code> pollution()</code>, <code> restfullAPI()</code> and <code> checkdataset()</code></p>
 
 <h3> Functions </h3>
-<br>
 <li><code> pollution()</code></li>
 <p> This function loads the Shiny  application. </p>
 <li><code> restfullAPI()</code></li>
