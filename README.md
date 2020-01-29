@@ -1,6 +1,6 @@
 # 01a62bb0
 
-<h1 align="center">Milan pollution Shiny App </h1>
+<h1 align="center">Milan pollution Shiny App Package </h1>
 <p> The aim of this project is to analysise the datas regarding pollution in Milan from the website of the Comune di Milano. In particular, the study is focused on the different pollutants detected during the years from ARPA stations. 
 <br>
 <h2> Installation</h2>
@@ -16,7 +16,7 @@ devtools::install_github('unimi-dse/01a62bb0')
 ```R
 require(milanpollution)
 ```
-<p> There are three exported function in the package that are <code> pollution()</code>, <code> restfullAPI()</code> and <code> checkdataset()</code></p>
+<p> There are three exported function in the package that are <code> pollution()</code>, <code> restfullAPI()</code> and <code> checkdataset()</code>.</p>
 
 <h3> Functions </h3>
 <li><code> pollution()</code></li>
@@ -28,10 +28,9 @@ require(milanpollution)
 <p> Check whether and which dataset is already loaded, download and visualise it.</p>
 
 <h2> Dataset </h2>
-<p> The study comprehends 3 dataset named "Rilevazione qualità dell'aria" (Air Quality Detection) from years 2017 to 2019. 
-The dataset derived from the city of Milan website, in particular the <a href= "http://dati.comune.milano.it/"> Opendata Portal.</a> </p>
+<p> The study consists of 3 dataset named "Rilevazione qualità dell'aria" (Air Quality Detection) from year 2017 to 2019. 
+The dataset is imported from the city of Milan website, in particular the <a href= "http://dati.comune.milano.it/"> Opendata Portal</a> using CKAN Application programming interface(API). </p>
 <p> The datasets has 3 fields: </p>
-
 - Date: date of the detected value
 - Pollutant: type of pollutant
 - Value: value of the pollutant
@@ -39,8 +38,7 @@ The dataset derived from the city of Milan website, in particular the <a href= "
 
 <h2> Technologies </h2>
 
-- Shiny App for the User Interface with other data visualization libraries.
-- CKAN Data Application programming interface(API) to import datas directly from the openData Milano website.
+- Shiny App: interactive web apps
 - R language
 
 <br>
@@ -52,14 +50,15 @@ The dataset derived from the city of Milan website, in particular the <a href= "
 <p> In the main page are presented two plots: the time series representation and the forecast calcolated on the Autoregressive integrated moving average (ARIMA) model. 
 
 
-<li> The first chart is interactive and it is possible to zoom in or to select a portion of it thanks to the Plotly package. This plot represents the time series of the data deteceted day by day by every station. Checking the Checkbox is possible to enable the visualization of the linear regression line of the time series.  </li>
-
+<li> The first chart is interactive and it is possible to zoom in or to select a portion of it thanks to the Plotly package. This plot represents the time series of the data deteceted day by day by every station. Checking the Checkbox is possible to enable the visualization of the linear regression line of the time series.</li>
+<br>
 ![Alt Text](https://raw.githubusercontent.com/unimi-dse/01a62bb0/master/img/mainpage.JPG)
 
 
 <br>
 
 <li> The second chart(also interactive) represents the forecast of the time series. Using the slidebar, is possible to set the lags of the forecast from 1 to 50 units. 
+<br>
 
 ![Alt Text](https://raw.githubusercontent.com/unimi-dse/01a62bb0/master/img/mainpage2.JPG)
 
