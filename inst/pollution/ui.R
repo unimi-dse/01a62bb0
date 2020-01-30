@@ -1,21 +1,7 @@
-#
-# This is the user-interface definition of a Shiny web application. You can
-# run the application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
 
-
-
-'%>%'  <- magrittr::`%>%`
-
-url = a("Comune di Milano", href="https://dati.comune.milano.it/dataset")
-
-
-# Define UI for application that draws a histogram
+# Define UI for application
 shiny::shinyUI(fluidPage(
+
                           #-- Load CSS --
                           theme= "style.css",
 
@@ -66,7 +52,7 @@ shiny::shinyUI(fluidPage(
                                                                               selected = "2019"),
 
 
-                                                                  helpText("Data from openData",url),
+                                                                  helpText("Data from openData", a("Comune di Milano", href="https://dati.comune.milano.it/dataset")),
                                                                   tags$img(src="milan.png", width = "80px", height = "100px",id="image"),
 
 
@@ -112,7 +98,7 @@ shiny::shinyUI(fluidPage(
                                                                   br(),
 
 
-                                                                  helpText("Data from openData",url),
+                                                                  helpText("Data from openData",  a("Comune di Milano", href="https://dati.comune.milano.it/dataset"),),
                                                                   tags$img(src="milan.png", width = "80px", height = "100px",id="image"),
 
 

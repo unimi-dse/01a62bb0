@@ -1,7 +1,6 @@
 
 
 #=== Shiny App Server ===
-'%>%'  <- magrittr::`%>%`
 
 
 shinyServer(function(input, output) {
