@@ -22,9 +22,8 @@ restfullAPI <- function(id = NULL)
     page <- httr::GET(url) # API request
     check = httr::status_code(page) # # Check that the call is successful
     if(check!=200)
-    {
       stop("The OpenData site of Milan does not have a dataset with this ID. Check more databases at the website: http://dati.comune.milano.it/dataset (ONLY those csv file that support CKAN API", call. = FALSE)
-    }
+
     leggo_list <- jsonlite::fromJSON(url)
     leggo <- leggo_list$result$records
 
