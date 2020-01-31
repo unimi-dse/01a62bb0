@@ -4,7 +4,7 @@ Version: 1.0.0
 Author: Andrea Ierard
 Maintainer: Andrea Ierardi <andreierardi@gmail.com>
 Description: Analysise the datas from the website of the Comune di Milano of different pollutants detected during the years from ARPA's stations. 
-Imports: shiny, ggplot2, forecast, xts, ckanr, httr, jsonlite, tidyverse, plotly, TSplotly,shinycssloaders,hash, magrittr 
+Imports: shiny, ggplot2, forecast, xts, ckanr, httr,dplyr, jsonlite, tidyverse, plotly, TSplotly,shinycssloaders,hash, magrittr 
 License: GPL-3
 Type: Package
 DisplayMode: Normal
