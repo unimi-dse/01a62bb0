@@ -15,6 +15,9 @@
 #' pollution()
 #'
 #'
+#' @rdname runApp
+#' @importFrom magrittr %>%
+#' @name %>%
 pollution <- function() {
   dir <- system.file("pollution", package = "milanpollution")
   if (dir == "") {
