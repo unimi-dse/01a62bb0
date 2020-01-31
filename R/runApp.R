@@ -1,4 +1,5 @@
 
+#'
 #' Milan pollution
 #' @description
 #' Run Milan pollution Sciny app.
@@ -15,7 +16,7 @@
 #' pollution()
 #'
 #'
-#' @rdname runApp
+#'
 #' @importFrom magrittr %>%
 #' @name %>%
 pollution <- function() {
