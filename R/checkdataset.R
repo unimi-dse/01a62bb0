@@ -4,23 +4,30 @@
 #' If the dataset is loaded, then get that from an \code{hash}, if not loaded then call \code{\link{restfullAPI}} and upload the \code{hash}
 #'
 #' @param year character. The year of the dataset to check
-#' @param pollutant character. The name of the pollutant to check. if \code{NULL} (the default) means we are checking the dataset for the stations
+#' @param pollutant character. The name of the pollutant to check. If \code{NULL} (the default) means we are checking the dataset for the stations
+#' @param lis list. The list containing the two hash of the dataset.
 #'
 #' @return data.frame
 #'
 #' @export
 #' @examples
-#' checkdataset(year, pollutant)
+#' checkdataset(year, pollutant, lis)
 #'
 #'
 #'
-checkdataset <- function(year, pollutant = NULL)
+checkdataset <- function(year, pollutant = NULL, lis =NULL)
 {
 
 
-  #check if the year is already loaded
-  checkYears(year)
+  if(is.null(lis))
+    lis = list(hash::hash(), hash::hash())
 
+  else
+    lis  = checkYears(year,lis)
+
+  #check if the year is already loaded
+  h = lis[[1]]
+  h2= lis[[2]]
   #If pollutant is not NULL, then are requested dataset for timeseries(page 1)
   if(!is.null(pollutant))
   {
@@ -29,7 +36,8 @@ checkdataset <- function(year, pollutant = NULL)
     test = subset(test,subset= test$inquinante==pollutant)
     test= test[,c('data','valore')]
 
-    return(test)
+    lis = list(h,h2)
+    return(list(test,lis))
 
   }
 
@@ -37,30 +45,54 @@ checkdataset <- function(year, pollutant = NULL)
   else
   {
     df = h2[[year]]
-    return(df)
+    lis = list(h,h2)
+    return(list(df,lis))
   }
 
 }
-
-h = hash::hash()
-h2 = hash::hash()
 
 
 #Check if dataset is already loaded
-checkYears <- function(year)
+#' Title
+#'
+#' @param year
+#' @param lis
+#'
+#' @return
+#'
+#' @examples
+checkYears <- function(year,lis)
 {
-  if(is.null(h[[year]])| is.null(h2[[year]]))
+
+  tmph = lis[[1]]
+  tmph2 = lis[[2]]
+
+  if(is.null(tmph[[year]])| is.null(tmph2[[year]]))
   {
 
     id <- switch(year,"2019" = "698a58e6-f276-44e1-92b1-3d2b81a4ad47" ,"2018"= "ea80c691-74bd-4356-94b6-0f446f190c0b","2017" =  "a032a06e-24c2-4df1-ac83-d001e9ddc577")
+    if(is.null(id))
+      stop("Could not find the year ID of the dataset. Type a year between 2017, 2018 or 2019", call. = FALSE)
+
     df = restfullAPI(id)
     test = datacleaning(df)
-    h[[year]] = test
-    h2[[year]]= station_clean(df)
+    tmph[[year]] = test
+    tmph2[[year]]= station_clean(df)
+
   }
+  return(lis)
 }
 
+
 #Clean the dataset for time series
+#' Title
+#'
+#' @param leggo
+#'
+#' @return
+#'
+#'
+#' @examples
 datacleaning <- function(leggo)
 {
   Data = leggo
@@ -75,7 +107,16 @@ datacleaning <- function(leggo)
   return (test)
 }
 
+
 #Clean the dataset for station infos
+#' Title
+#'
+#' @param file
+#'
+#' @return
+#'
+#'
+#' @examples
 station_clean <- function(file)
 {
   file$valore = as.double(file$valore)

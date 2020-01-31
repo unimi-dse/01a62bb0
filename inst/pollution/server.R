@@ -5,6 +5,13 @@
 
 shinyServer(function(input, output) {
 
+
+  h = hash::hash()
+  h2 = hash::hash()
+
+  lis = list(h,h2)
+
+
   #==== page #1 ====
 
   # Render timeseries plot in main panel of page #1
@@ -13,7 +20,9 @@ shinyServer(function(input, output) {
 
 
 
-    poll =  checkdataset(input$years,input$pollutant)
+    couple =  checkdataset(input$years,input$pollutant, lis)
+    poll= couple[[1]]
+    lis = couple[[2]]
     inp = input$pollutant
 
 
@@ -42,8 +51,11 @@ shinyServer(function(input, output) {
   # Render forecast plot in main panel
   output$Forecast<-plotly::renderPlotly({
 
-    poll = checkdataset(input$years,input$pollutant)
 
+    couple = checkdataset(input$years,input$pollutant,lis)
+
+    poll= couple[[1]]
+    lis = couple[[2]]
     time =xts::xts(poll[,-1],order.by = poll[,1])
     fit = forecast::auto.arima(time)
     TSplotly::TSplot(50,forecast::forecast(fit,input$lag),  Ylab = "Value", Xlab = "Time(Day)",NEWtitle="ARIMA Forecast",title_size =15, ts_original = "Original time series", ts_forecast= "Predicted time series")
@@ -58,8 +70,9 @@ shinyServer(function(input, output) {
   output$stations_plot <-plotly::renderPlotly(
     {
 
-      df =  checkdataset(input$yearstation,NULL)
-
+      couple =  checkdataset(input$yearstation,NULL,lis)
+      df= couple[[1]]
+      lis = couple[[2]]
       plotly::plot_ly(df,
                       x = df$station_id,
                       y = df$total_detected,
@@ -74,13 +87,21 @@ shinyServer(function(input, output) {
 
   #Write the station infos in the lateral panel of page
   output$stations_info <- renderText({
+
+    couple=checkdataset(input$yearstation,NULL,lis)
+    df= couple[[1]]
+    lis = couple[[2]]
     paste("In the year",
-          input$yearstation, "there were", length(checkdataset(input$yearstation,NULL)$station_id), "active stations.","<br>","The active station were: ")
+          input$yearstation, "there were", length(df$station_id), "active stations.","<br>","The active station were: ")
   })
 
   #Write which station where active in the lateral panel of page
   output$stations_active <- renderText({
-    paste(checkdataset(input$yearstation,NULL)$station_id)
+
+    couple=checkdataset(input$yearstation,NULL,lis)
+    df= couple[[1]]
+    lis = couple[[2]]
+    paste(df$station_id)
   })
 
 

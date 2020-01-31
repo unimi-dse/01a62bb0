@@ -4,12 +4,14 @@
 \alias{checkdataset}
 \title{Checkdataset}
 \usage{
-checkdataset(year, pollutant = NULL)
+checkdataset(year, pollutant = NULL, lis = NULL)
 }
 \arguments{
 \item{year}{character. The year of the dataset to check}
 
-\item{pollutant}{character. The name of the pollutant to check. if \code{NULL} (the default) means we are checking the dataset for the stations}
+\item{pollutant}{character. The name of the pollutant to check. If \code{NULL} (the default) means we are checking the dataset for the stations}
+
+\item{lis}{list. The list containing the two hash of the dataset.}
 }
 \value{
 data.frame
@@ -19,7 +21,7 @@ Check whether and which dataset is already loaded, download and visualise it.
 If the dataset is loaded, then get that from an \code{hash}, if not loaded then call \code{\link{restfullAPI}} and upload the \code{hash}
 }
 \examples{
-checkdataset(year, pollutant)
+checkdataset(year, pollutant, lis)
 
 
 
