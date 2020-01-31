@@ -18,6 +18,8 @@
 checkdataset <- function(year, pollutant = NULL, lis =NULL)
 {
 
+  if(is.null(year))
+    stop("year parameter missing", call. = FALSE)
   lis  = checkYears(year,lis)
 
   #check if the year is already loaded
@@ -30,7 +32,8 @@ checkdataset <- function(year, pollutant = NULL, lis =NULL)
     test = h[[year]]
     test = subset(test,subset= test$inquinante==pollutant)
     test= test[,c('data','valore')]
-
+    if(length(test)==0)
+      stop("Please, insert a valid pollutant between [SO2,C6H6,CO_8h,NO2,O3,PM10,PM25]", call. = FALSE)
     lis = list(h,h2)
     return(list(test,lis))
 
@@ -58,6 +61,9 @@ checkdataset <- function(year, pollutant = NULL, lis =NULL)
 #' @examples
 checkYears <- function(year,lis)
 {
+
+  if(is.null(lis))
+    lis = list(hash::hash(),hash::hash())
 
   tmph = lis[[1]]
   tmph2 = lis[[2]]
