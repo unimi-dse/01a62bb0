@@ -11,7 +11,7 @@ checkdataset(year, pollutant = NULL, lis = NULL)
 
 \item{pollutant}{character. The name of the pollutant to check. If \code{NULL} (the default) means we are checking the dataset for the stations}
 
-\item{lis}{list. The list containing the two hash of the dataset.}
+\item{lis}{list. The list contains on the first slot the dataset requested (using \code{pollutant} parameter) and on the second slot uploaded the hash to maintain the dataset in memoery.}
 }
 \value{
 data.frame
