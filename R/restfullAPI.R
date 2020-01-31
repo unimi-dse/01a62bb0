@@ -20,10 +20,18 @@ restfullAPI <- function(id = NULL)
     url <- paste0("http://dati.comune.milano.it/api/action/",
                   "datastore_search?", paste("resource_id=", id,"&limit=10000", sep=""))
     page <- httr::GET(url) # API request
-    httr::status_code(page) # # Check that the call is successful
+    check = httr::status_code(page) # # Check that the call is successful
+    if(check!=200)
+    {
+      stop("The OpenData site of Milan does not have a dataset with this ID. Check more databases at the website: http://dati.comune.milano.it/dataset (ONLY those csv file that support CKAN API", call. = FALSE)
+    }
     leggo_list <- jsonlite::fromJSON(url)
     leggo <- leggo_list$result$records
+
+    message("Dataset downloaded with success")
     return(leggo)
+
+
   }
 
 

@@ -18,12 +18,7 @@
 checkdataset <- function(year, pollutant = NULL, lis =NULL)
 {
 
-
-  if(is.null(lis))
-    lis = list(hash::hash(), hash::hash())
-
-  else
-    lis  = checkYears(year,lis)
+  lis  = checkYears(year,lis)
 
   #check if the year is already loaded
   h = lis[[1]]
@@ -72,7 +67,7 @@ checkYears <- function(year,lis)
 
     id <- switch(year,"2019" = "698a58e6-f276-44e1-92b1-3d2b81a4ad47" ,"2018"= "ea80c691-74bd-4356-94b6-0f446f190c0b","2017" =  "a032a06e-24c2-4df1-ac83-d001e9ddc577")
     if(is.null(id))
-      stop("Could not find the year ID of the dataset. Type a year between 2017, 2018 or 2019", call. = FALSE)
+      stop("Could not find the year ID of the dataset. Insert an year between 2017, 2018 or 2019", call. = FALSE)
 
     df = restfullAPI(id)
     test = datacleaning(df)
