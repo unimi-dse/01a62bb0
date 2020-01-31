@@ -1,6 +1,6 @@
 
+#'#' Milan pollution
 #'
-#' Milan pollution
 #' @description
 #' Run Milan pollution Sciny app.
 #' The application will start showing the main page in which are presented two plots: the first one is a time series and the second one is a forecast of the timeseries.
@@ -17,8 +17,6 @@
 #'
 #'
 #'
-#' @importFrom magrittr %>%
-#' @name %>%
 pollution <- function() {
   dir <- system.file("pollution", package = "milanpollution")
   if (dir == "") {
