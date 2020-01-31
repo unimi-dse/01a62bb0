@@ -2,16 +2,21 @@
 % Please edit documentation in R/checkdataset.R
 \name{checkYears}
 \alias{checkYears}
-\title{Title}
+\title{Check years Milan Pollution}
 \usage{
 checkYears(year, lis)
 }
 \arguments{
-\item{lis}{}
+\item{year}{character. The year dataset to check0}
+
+\item{lis}{list. List that contains the hash of saved dataset on the fly}
 }
 \value{
-
+list
 }
 \description{
-Title
+Check if dataset is already loaded
+}
+\examples{
+checkYears(year, lis)
 }

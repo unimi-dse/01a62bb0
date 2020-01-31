@@ -2,16 +2,19 @@
 % Please edit documentation in R/checkdataset.R
 \name{station_clean}
 \alias{station_clean}
-\title{Title}
+\title{Clean dataset Stations}
 \usage{
 station_clean(file)
 }
 \arguments{
-\item{file}{}
+\item{file}{data.frame. Dataframe to clean}
 }
 \value{
-
+data.frame. Dataframe cleaned
 }
 \description{
-Title
+Clean the dataset for station infos
+}
+\examples{
+station_clean(file)
 }

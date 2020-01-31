@@ -2,16 +2,19 @@
 % Please edit documentation in R/checkdataset.R
 \name{datacleaning}
 \alias{datacleaning}
-\title{Title}
+\title{Clean dataset TS}
 \usage{
 datacleaning(leggo)
 }
 \arguments{
-\item{leggo}{}
+\item{leggo}{data.frame. Dataframe to clean}
 }
 \value{
-
+data.frame. Dataframe cleaned
 }
 \description{
-Title
+Clean the dataset for time series
+}
+\examples{
+datacleaning(leggo)
 }

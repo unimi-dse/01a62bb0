@@ -51,15 +51,17 @@ checkdataset <- function(year, pollutant = NULL, lis =NULL)
 }
 
 
-#Check if dataset is already loaded
-#' Title
+#' Check years Milan Pollution
 #'
-#' @param year
-#' @param lis
+#' Check if dataset is already loaded
+#' @param year character. The year dataset to check0
+#' @param lis list. List that contains the hash of saved dataset on the fly
 #'
-#' @return
+#'
+#' @return list
 #'
 #' @examples
+#' checkYears(year, lis)
 checkYears <- function(year,lis)
 {
 
@@ -86,15 +88,17 @@ checkYears <- function(year,lis)
 }
 
 
-#Clean the dataset for time series
-#' Title
+#' Clean dataset TS
 #'
-#' @param leggo
+#' Clean the dataset for time series
 #'
-#' @return
+#' @param leggo data.frame. Dataframe to clean
+#'
+#' @return data.frame. Dataframe cleaned
 #'
 #'
 #' @examples
+#' datacleaning(leggo)
 datacleaning <- function(leggo)
 {
   Data = leggo
@@ -110,15 +114,16 @@ datacleaning <- function(leggo)
 }
 
 
-#Clean the dataset for station infos
-#' Title
+#' Clean dataset Stations
 #'
-#' @param file
+#' Clean the dataset for station infos
+#' @param file data.frame. Dataframe to clean
 #'
-#' @return
+#' @return data.frame. Dataframe cleaned
 #'
 #'
 #' @examples
+#' station_clean(file)
 station_clean <- function(file)
 {
   file$valore = as.double(file$valore)
