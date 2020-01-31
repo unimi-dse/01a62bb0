@@ -18,8 +18,6 @@
 checkdataset <- function(year, pollutant = NULL, lis =NULL)
 {
 
-  if(is.null(year))
-    stop("year parameter missing", call. = FALSE)
   lis  = checkYears(year,lis)
 
   #check if the year is already loaded
