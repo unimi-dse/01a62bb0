@@ -52,14 +52,14 @@ The dataset is imported from the city of Milan website, in particular the <a hre
 
 <li> The first chart is interactive and it is possible to zoom in or to select a portion of it thanks to the Plotly package. This plot represents the time series of the data deteceted day by day by every station. Checking the Checkbox is possible to enable the visualization of the linear regression line of the time series.
 
-![Alt Text](/img/mainpage.JPG)
+![Alt Text](inst/pollution/www/img/mainpage.JPG)
 </li>
 <br>
 
 <li> The second chart(also interactive) represents the forecast of the time series. Using the slidebar, is possible to set the lags of the forecast from 1 to 50 units. 
 <br>
 
-![Alt Text](/img/mainpage2.JPG)
+![Alt Text](inst/pollution/www/img/mainpage2.JPG)
 
 </li>
 <br>
@@ -74,10 +74,10 @@ The dataset is imported from the city of Milan website, in particular the <a hre
 
 <li>  In this page is possible to see the barplot(interactive) representing the number of total detected data from each station during the selected year. On the horizontal axis the are the station IDs on the vertical the detected data during the year. 
 
-![Alt Text](/img/secondpage.JPG)
+![Alt Text](inst/pollution/www/img/secondpage.JPG)
 </li>
 <h3> Third page: About </h3>
 <li>This section describes the project and the author details. 
 
-![Alt Text](/img/thirdpage.JPG)
+![Alt Text](inst/pollution/www/img/thirdpage.JPG)
 </li>
