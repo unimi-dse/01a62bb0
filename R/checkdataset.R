@@ -21,8 +21,8 @@ checkdataset <- function(year, pollutant = NULL, lis =NULL)
   if(is.null(year))
     stop("Year parameter empty",call.=FALSE)
 
-  if(!is.null(pollutant) & pollutant %in% c("SO2","C6H6","CO_8h","NO2","O3","PM10","PM25") )
-    stop("Please, insert a valid pollutant between [SO2,C6H6,CO_8h,NO2,O3,PM10,PM25]", call. = FALSE)
+ # if(!is.null(pollutant) & pollutant %in% c("SO2","C6H6","CO_8h","NO2","O3","PM10","PM25") )
+  #  stop("Please, insert a valid pollutant between [SO2,C6H6,CO_8h,NO2,O3,PM10,PM25]", call. = FALSE)
   lis  = checkYears(year,lis)
 
   #check if the year is already loaded
