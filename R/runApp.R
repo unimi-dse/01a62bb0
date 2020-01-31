@@ -18,7 +18,8 @@
 #'#' re-export magrittr pipe operator
 #'
 #' @importFrom magrittr %>%
-#' @name %>%
+#' @name %>
+#' @rdname pipe
 #'
 pollution <- function() {
   dir <- system.file("pollution", package = "milanpollution")
