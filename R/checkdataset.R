@@ -5,7 +5,7 @@
 #'
 #' @param year character. The year of the dataset to check
 #' @param pollutant character. The name of the pollutant to check. If \code{NULL} (the default) means we are checking the dataset for the stations
-#' @param lis list. The list containing the two hash of the dataset.
+#' @param lis list. The list contains on the first slot the dataset requested (using \code{pollutant} parameter) and on the second slot uploaded the hash to maintain the dataset in memoery.
 #'
 #' @return data.frame
 #'
@@ -18,6 +18,11 @@
 checkdataset <- function(year, pollutant = NULL, lis =NULL)
 {
 
+  if(is.null(year))
+    stop("Year parameter empty",call.=FALSE)
+
+  if(!is.null(pollutant) & (pollutant %in% c("SO2","C6H6","CO_8h","NO2","O3","PM10","PM25") ))
+    stop("Please, insert a valid pollutant between [SO2,C6H6,CO_8h,NO2,O3,PM10,PM25]", call. = FALSE)
   lis  = checkYears(year,lis)
 
   #check if the year is already loaded
@@ -30,8 +35,6 @@ checkdataset <- function(year, pollutant = NULL, lis =NULL)
     test = h[[year]]
     test = subset(test,subset= test$inquinante==pollutant)
     test= test[,c('data','valore')]
-    if(length(test)==0)
-      stop("Please, insert a valid pollutant between [SO2,C6H6,CO_8h,NO2,O3,PM10,PM25]", call. = FALSE)
     lis = list(h,h2)
     return(list(test,lis))
 
