@@ -15,7 +15,10 @@
 #' @examples
 #' pollution()
 #'
+#'#' re-export magrittr pipe operator
 #'
+#' @importFrom magrittr %>%
+#' @name %>%
 #'
 pollution <- function() {
   dir <- system.file("pollution", package = "milanpollution")
