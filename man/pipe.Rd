@@ -2,7 +2,7 @@
 % Please edit documentation in R/pipe.R
 \name{\%>\%}
 \alias{\%>\%}
-\title{magrittr forward-pipe operator}
+\title{re-export magrittr pipe operator}
 \description{
-magrittr forward-pipe operator
+re-export magrittr pipe operator
 }
