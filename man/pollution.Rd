@@ -3,7 +3,7 @@
 \name{\%>\%}
 \alias{\%>\%}
 \alias{pollution}
-\title{#' Milan pollution}
+\title{Milan pollution}
 \usage{
 pollution()
 }

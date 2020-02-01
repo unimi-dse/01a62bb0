@@ -1,4 +1,4 @@
-#'#' Milan pollution
+#' Milan pollution
 #'
 #' @description
 #' Run Milan pollution Sciny app.
@@ -11,13 +11,10 @@
 #' @return shiny app
 #' @export
 #'
-#'
-#' @importFrom magrittr %>%
-#' @name %>%
-#'
 #' @examples
 #' pollution()
-
+#' @importFrom magrittr %>%
+#' @name %>%
 pollution <- function() {
   dir <- system.file("pollution", package = "milanpollution")
   if (dir == "") {
