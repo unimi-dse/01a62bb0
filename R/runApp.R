@@ -15,7 +15,7 @@
 #' @examples
 #' pollution()
 #'
-#'
+#'#' re-export magrittr pipe operator
 #'
 #' @importFrom magrittr %>%
 #' @name %>%
