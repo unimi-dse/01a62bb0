@@ -1,5 +1,4 @@
-
-#'#' Milan pollution
+#' Milan pollution
 #'
 #' @description
 #' Run Milan pollution Sciny app.
@@ -8,7 +7,6 @@
 #' Then, is possible to select the year of the datas that will be represented by the plots. Datas are taken by the Opendata set of the comune di Milan site using CKAN API.
 #' The second part is the stations information. Will be presented the plot of the datas taken from each ARPA station during the selected year.
 #' The last part is the "about" in which will be described the project and the author.
-
 #' @return shiny app
 #' @export
 #'
@@ -20,7 +18,6 @@
 #' @importFrom magrittr %>%
 #' @name %>%
 #' @rdname pipe
-#'
 pollution <- function() {
   dir <- system.file("pollution", package = "milanpollution")
   if (dir == "") {
@@ -29,3 +26,5 @@ pollution <- function() {
 
   shiny::runApp(dir, display.mode = "normal", launch.browser = T)
 }
+
+##

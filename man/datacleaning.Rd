@@ -13,8 +13,11 @@ datacleaning(leggo)
 data.frame. Dataframe cleaned
 }
 \description{
-Clean the dataset for time series
+Clean the dataset for time series. It will delete the station_id, remove NA and convert the classes of the objects.
+Then, aggregate the value detected in the same day using a mean function
 }
 \examples{
+\dontrun{
 datacleaning(leggo)
+}
 }

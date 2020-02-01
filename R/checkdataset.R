@@ -1,33 +1,29 @@
 #' Checkdataset
 #'
-#' Check whether and which dataset is already loaded, download and visualise it.
-#' If the dataset is loaded, then get that from an \code{hash}, if not loaded then call \code{\link{restfullAPI}} and upload the \code{hash}
+#' Check whether and which datasetis already loaded, download and visualise it.
+#' If the dataset is loaded, then get that from an \code{hash}, if not loaded then call \code{\link{restfullAPI}} and upload the \code{hash} If pollutant is \code{NULL} then the function will get the time series dataset else the function will get the data detected from each station. It return a list contains the dataset cleaned and requested and a list containing the hash of the dataset already download to keep it in memory. PS. This only works with "Rilevazione qualità aria" dataset of openData website!
 #'
 #' @param year character. The year of the dataset to check
-#' @param pollutant character. The name of the pollutant to check. If \code{NULL} (the default) means we are checking the dataset for the stations
-#' @param lis list. The list contains on the first slot the dataset requested (using \code{pollutant} parameter) and on the second slot uploaded the hash to maintain the dataset in memoery.
+#' @param pollutant character. The name of the pollutant to check. If \code{NULL} (the default) means we are checking the dataset for the stations else we are checking for time series.
+#' @param lis list. The list contains on the first slot the dataset requested (using \code{pollutant} parameter) and on the second slot uploaded the hash to maintain the dataset in memory.
 #'
-#' @return data.frame
-#'
+#' @return list
 #' @export
 #' @examples
+#' \dontrun{
 #' checkdataset(year, pollutant, lis)
-#'
-#'
-#'
+#' }
 checkdataset <- function(year, pollutant = NULL, lis =NULL)
 {
 
   if(is.null(year))
     stop("Year parameter empty",call.=FALSE)
 
- # if(!is.null(pollutant) & pollutant %in% c("SO2","C6H6","CO_8h","NO2","O3","PM10","PM25") )
-  #  stop("Please, insert a valid pollutant between [SO2,C6H6,CO_8h,NO2,O3,PM10,PM25]", call. = FALSE)
-  lis  = checkYears(year,lis)
-
   #check if the year is already loaded
+  lis  = checkYears(year,lis)
   h = lis[[1]]
   h2= lis[[2]]
+
   #If pollutant is not NULL, then are requested dataset for timeseries(page 1)
   if(!is.null(pollutant))
   {
@@ -53,15 +49,17 @@ checkdataset <- function(year, pollutant = NULL, lis =NULL)
 
 #' Check years Milan Pollution
 #'
-#' Check if dataset is already loaded
-#' @param year character. The year dataset to check0
-#' @param lis list. List that contains the hash of saved dataset on the fly
+#' Check if dataset of years 2017, 2018 or 2019 is already loaded
+#' @param year character. The year of the dataset to check
+#' @param lis list. List that contains the hash of saved dataset
 #'
 #'
 #' @return list
 #'
 #' @examples
+#' \dontrun{
 #' checkYears(year, lis)
+#' }
 checkYears <- function(year,lis)
 {
 
@@ -90,7 +88,8 @@ checkYears <- function(year,lis)
 
 #' Clean dataset TS
 #'
-#' Clean the dataset for time series
+#' Clean the dataset for time series. It will delete the station_id, remove NA and convert the classes of the objects.
+#' Then, aggregate the value detected in the same day using a mean function
 #'
 #' @param leggo data.frame. Dataframe to clean
 #'
@@ -98,7 +97,9 @@ checkYears <- function(year,lis)
 #'
 #'
 #' @examples
+#' \dontrun{
 #' datacleaning(leggo)
+#' }
 datacleaning <- function(leggo)
 {
   Data = leggo
@@ -116,14 +117,16 @@ datacleaning <- function(leggo)
 
 #' Clean dataset Stations
 #'
-#' Clean the dataset for station infos
+#' Clean the dataset for station informations. Convert the classes of the object, remove NA and create a new dataframe with the station informations.
 #' @param file data.frame. Dataframe to clean
 #'
 #' @return data.frame. Dataframe cleaned
 #'
 #'
 #' @examples
+#' \dontrun{
 #' station_clean(file)
+#' }
 station_clean <- function(file)
 {
   file$valore = as.double(file$valore)

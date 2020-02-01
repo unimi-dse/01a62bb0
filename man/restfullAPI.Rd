@@ -7,7 +7,7 @@
 restfullAPI(id = NULL)
 }
 \arguments{
-\item{id}{character. Identify the id of the dataset. if \code{NULL} return an error}
+\item{id}{character. Identify the ID of the dataset. if \code{NULL} or not a valid ID for a dataset, return an error.}
 }
 \value{
 data.frame

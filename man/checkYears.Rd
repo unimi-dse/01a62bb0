@@ -7,16 +7,18 @@
 checkYears(year, lis)
 }
 \arguments{
-\item{year}{character. The year dataset to check0}
+\item{year}{character. The year of the dataset to check}
 
-\item{lis}{list. List that contains the hash of saved dataset on the fly}
+\item{lis}{list. List that contains the hash of saved dataset}
 }
 \value{
 list
 }
 \description{
-Check if dataset is already loaded
+Check if dataset of years 2017, 2018 or 2019 is already loaded
 }
 \examples{
+\dontrun{
 checkYears(year, lis)
+}
 }
