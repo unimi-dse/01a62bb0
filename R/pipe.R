@@ -3,5 +3,4 @@
 #' @importFrom dplyr %>%
 #' @name %>%
 #' @rdname pipe
-#' @export
 NULL
