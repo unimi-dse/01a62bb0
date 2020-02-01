@@ -16,8 +16,9 @@
 #' pollution()
 #'
 #'
-#' @importFrom dplyr %>%
-#' @name %>
+#'
+#' @importFrom magrittr %>%
+#' @name %>%
 #' @rdname pipe
 #'
 pollution <- function() {
