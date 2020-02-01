@@ -15,18 +15,10 @@ checkdataset(year, pollutant = NULL, lis = NULL)
 }
 \value{
 list
-\describe{
-\item{data.frame} {requested dataframe}
-\item{list} {list of hash tables in memory}
-
-}
 }
 \description{
 Check whether and which datasetis already loaded, download and visualise it.
-If the dataset is loaded, then get that from an \code{hash}, if not loaded then call \code{\link{restfullAPI}} and upload the \code{hash}
-If pollutant is \code{NULL} then the function will get the time series dataset else the function will get the data detected from each station.
-It return a list contains the dataset cleaned and requested and a list containing the hash of the dataset already download to keep it in memory.
-PS. This only works with "Rilevazione qualità aria" dataset of openData website!
+If the dataset is loaded, then get that from an \code{hash}, if not loaded then call \code{\link{restfullAPI}} and upload the \code{hash} If pollutant is \code{NULL} then the function will get the time series dataset else the function will get the data detected from each station. It return a list contains the dataset cleaned and requested and a list containing the hash of the dataset already download to keep it in memory. PS. This only works with "Rilevazione qualità aria" dataset of openData website!
 }
 \examples{
 checkdataset(year, pollutant, lis)
