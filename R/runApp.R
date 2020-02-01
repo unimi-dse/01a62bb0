@@ -8,16 +8,12 @@
 #' The second part is the stations information. Will be presented the plot of the datas taken from each ARPA station during the selected year.
 #' The last part is the "about" in which will be described the project and the author.
 #' @return shiny app
-#' @export
 #'
 #' @examples
 #' pollution()
-#'
-#'#' re-export magrittr pipe operator
-#'
+#' @export
 #' @importFrom magrittr %>%
-#' @name %>%
-#' @rdname pipe
+#'
 pollution <- function() {
   dir <- system.file("pollution", package = "milanpollution")
   if (dir == "") {
