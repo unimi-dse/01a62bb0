@@ -1,8 +1,3 @@
-#' #' re-export magrittr pipe operator
-#'
-#' @importFrom magrittr %>%
-#' @name %>%
-#'
 #'#' Milan pollution
 #'
 #' @description
@@ -15,6 +10,10 @@
 #' @rdname pollution
 #' @return shiny app
 #' @export
+#'
+#'
+#' @importFrom magrittr %>%
+#' @name %>%
 #'
 #' @examples
 #' pollution()
