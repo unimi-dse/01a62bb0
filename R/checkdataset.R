@@ -10,7 +10,9 @@
 #' @return list
 #' @export
 #' @examples
+#' \dontrun{
 #' checkdataset(year, pollutant, lis)
+#' }
 checkdataset <- function(year, pollutant = NULL, lis =NULL)
 {
 
@@ -55,7 +57,9 @@ checkdataset <- function(year, pollutant = NULL, lis =NULL)
 #' @return list
 #'
 #' @examples
+#' \dontrun{
 #' checkYears(year, lis)
+#' }
 checkYears <- function(year,lis)
 {
 
@@ -93,7 +97,9 @@ checkYears <- function(year,lis)
 #'
 #'
 #' @examples
+#' \dontrun{
 #' datacleaning(leggo)
+#' }
 datacleaning <- function(leggo)
 {
   Data = leggo
@@ -118,7 +124,9 @@ datacleaning <- function(leggo)
 #'
 #'
 #' @examples
+#' \dontrun{
 #' station_clean(file)
+#' }
 station_clean <- function(file)
 {
   file$valore = as.double(file$valore)

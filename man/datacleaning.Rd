@@ -17,5 +17,7 @@ Clean the dataset for time series. It will delete the station_id, remove NA and 
 Then, aggregate the value detected in the same day using a mean function
 }
 \examples{
+\dontrun{
 datacleaning(leggo)
+}
 }

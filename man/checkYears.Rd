@@ -18,5 +18,7 @@ list
 Check if dataset of years 2017, 2018 or 2019 is already loaded
 }
 \examples{
+\dontrun{
 checkYears(year, lis)
+}
 }
