@@ -10,7 +10,12 @@
 #' @param pollutant character. The name of the pollutant to check. If \code{NULL} (the default) means we are checking the dataset for the stations else we are checking for time series.
 #' @param lis list. The list contains on the first slot the dataset requested (using \code{pollutant} parameter) and on the second slot uploaded the hash to maintain the dataset in memory.
 #'
-#' @return data.frame
+#' @return list
+#' \describe{
+#' \item{data.frame} {requested dataframe}
+#' \item{list} {list of hash tables in memory}
+#'
+#' }
 #'
 #' @export
 #' @examples

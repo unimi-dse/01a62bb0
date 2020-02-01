@@ -14,7 +14,12 @@ checkdataset(year, pollutant = NULL, lis = NULL)
 \item{lis}{list. The list contains on the first slot the dataset requested (using \code{pollutant} parameter) and on the second slot uploaded the hash to maintain the dataset in memory.}
 }
 \value{
-data.frame
+list
+\describe{
+\item{data.frame} {requested dataframe}
+\item{list} {list of hash tables in memory}
+
+}
 }
 \description{
 Check whether and which datasetis already loaded, download and visualise it.
