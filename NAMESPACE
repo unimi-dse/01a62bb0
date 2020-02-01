@@ -3,4 +3,4 @@
 export(checkdataset)
 export(pollution)
 export(restfullAPI)
-importFrom(magrittr,"%>%")
+importFrom(dplyr,"%>%")
