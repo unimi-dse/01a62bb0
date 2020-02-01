@@ -12,13 +12,14 @@
 #' @examples
 #' pollution()
 #' @export
-#' @importFrom dplyr %>%
 #'
+
 pollution <- function() {
   dir <- system.file("pollution", package = "milanpollution")
   if (dir == "") {
     stop("Could not find pollution. Try re-installing `milanpollution`.", call. = FALSE)
   }
+  #' @importFrom dplyr %>%
 
   shiny::runApp(dir, display.mode = "normal", launch.browser = T)
 }
