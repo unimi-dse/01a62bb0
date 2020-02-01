@@ -19,7 +19,6 @@
 #' @importFrom magrittr %>%
 #' @name %>
 #' @rdname pipe
-#'
 pollution <- function() {
   dir <- system.file("pollution", package = "milanpollution")
   if (dir == "") {
