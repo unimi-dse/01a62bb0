@@ -22,3 +22,5 @@ pollution <- function() {
 
   shiny::runApp(dir, display.mode = "normal", launch.browser = T)
 }
+
+##
