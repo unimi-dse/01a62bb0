@@ -21,5 +21,6 @@ The last part is the "about" in which will be described the project and the auth
 \examples{
 pollution()
 
+#' re-export magrittr pipe operator
 
 }
