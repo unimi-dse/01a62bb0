@@ -12,7 +12,7 @@
 #' @examples
 #' pollution()
 #' @export
-#' @importFrom magrittr %>%
+#' @importFrom dplyr %>%
 #'
 pollution <- function() {
   dir <- system.file("pollution", package = "milanpollution")
