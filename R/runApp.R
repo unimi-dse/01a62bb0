@@ -14,13 +14,6 @@
 #'
 #' @examples
 #' pollution()
-#'
-#'#' re-export magrittr pipe operator
-#'
-#' @importFrom magrittr %>%
-#' @name %>%
-#' @rdname pipe
-#'
 pollution <- function() {
   dir <- system.file("pollution", package = "milanpollution")
   if (dir == "") {
