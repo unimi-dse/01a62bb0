@@ -13,7 +13,7 @@ station_clean(file)
 data.frame. Dataframe cleaned
 }
 \description{
-Clean the dataset for station infos
+Clean the dataset for station informations. Convert the classes of the object, remove NA and create a new dataframe with the station informations.
 }
 \examples{
 station_clean(file)
