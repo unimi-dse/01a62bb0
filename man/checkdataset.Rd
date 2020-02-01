@@ -22,7 +22,4 @@ If the dataset is loaded, then get that from an \code{hash}, if not loaded then 
 }
 \examples{
 checkdataset(year, pollutant, lis)
-
-
-
 }

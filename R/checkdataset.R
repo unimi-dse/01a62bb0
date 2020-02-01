@@ -11,9 +11,6 @@
 #' @export
 #' @examples
 #' checkdataset(year, pollutant, lis)
-#'
-#'
-#'
 checkdataset <- function(year, pollutant = NULL, lis =NULL)
 {
 
