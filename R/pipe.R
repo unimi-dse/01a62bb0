@@ -4,5 +4,4 @@
 #' @name %>%
 #' @rdname pipe
 #' @export
-#'
 NULL
