@@ -64,10 +64,10 @@ shiny::shinyUI(fluidPage(
 
                                                               h1("Plot results"),
                                                               hr(),
-                                                              plotly::plotlyOutput('Timeseries')%>% shinycssloaders::withSpinner(color="#0dc5c1"),
+                                                              shinycssloaders::withSpinner(plotly::plotlyOutput('Timeseries'),color="#0dc5c1"),
                                                               br(),
                                                               hr(),
-                                                              plotly::plotlyOutput("Forecast")%>% shinycssloaders::withSpinner(color="#0dc5c1"),
+                                                              shinycssloaders::withSpinner( plotly::plotlyOutput("Forecast"),color="#0dc5c1"),
                                                               br(),
 
                                                     )
@@ -87,8 +87,8 @@ shiny::shinyUI(fluidPage(
                                                                   h1("Number of active stations"),
                                                                   hr(),
 
-                                                                  htmlOutput("stations_info")%>% shinycssloaders::withSpinner(color="#0dc5c1"),
-                                                                  htmlOutput("stations_active")%>% shinycssloaders::withSpinner(color="#0dc5c1"),
+                                                                  shinycssloaders::withSpinner(htmlOutput("stations_info"),color="#0dc5c1"),
+                                                                  shinycssloaders::withSpinner(htmlOutput("stations_active"),color="#0dc5c1"),
 
                                                                   hr(),
                                                                   selectInput("yearstation",
@@ -110,7 +110,7 @@ shiny::shinyUI(fluidPage(
                                                     mainPanel(id="backg",
                                                               h1("Plot results"),
                                                               hr(),
-                                                              plotly::plotlyOutput("stations_plot")%>% shinycssloaders::withSpinner(color="#0dc5c1"),
+                                                              shinycssloaders::withSpinner(plotly::plotlyOutput("stations_plot"),color="#0dc5c1"),
                                                               br(),
                                                     ))
 
