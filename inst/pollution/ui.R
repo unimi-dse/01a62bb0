@@ -139,8 +139,10 @@ shiny::shinyUI(fluidPage(
                                           hr(),
 
                                           h2("Link"),
+                                          shiny::icon("linkedin"),
                                           a("LinkedIn", href="https://www.linkedin.com/in/andreaierardi/"),
                                           br(),
+                                          shiny::icon("github"),
                                           a("Github",href="https://github.com/Andreaierardi")
 
 
