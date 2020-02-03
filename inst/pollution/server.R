@@ -2,7 +2,7 @@
 
 #=== Shiny App Server ===
 
-source("checkdataset.R")
+source("R/checkdataset.R")
 
 shinyServer(function(input, output) {
 
