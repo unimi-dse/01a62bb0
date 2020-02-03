@@ -16,7 +16,7 @@ devtools::install_github('unimi-dse/01a62bb0')
 ```R
 require(milanpollution)
 ```
-<p> There are three exported function in the package that are <code> pollution()</code>, <code> restfullAPI()</code>.</p>
+<p> There are three exported function in the package that are <code> pollution()</code> and <code> restfullAPI()</code>.</p>
 
 <h3> Functions </h3>
 <li><code> pollution()</code></li>
