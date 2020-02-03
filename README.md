@@ -16,7 +16,7 @@ devtools::install_github('unimi-dse/01a62bb0')
 ```R
 require(milanpollution)
 ```
-<p> There are three exported function in the package that are <code> pollution()</code>, <code> restfullAPI()</code> and <code> checkdataset()</code>.</p>
+<p> There are three exported function in the package that are <code> pollution()</code>, <code> restfullAPI()</code>.</p>
 
 <h3> Functions </h3>
 <li><code> pollution()</code></li>
@@ -24,8 +24,6 @@ require(milanpollution)
 <li><code> restfullAPI()</code></li>
 <p> Get the dataset from the Opendata website of the city of Milan using CRAN API. </p>
 
-<li><code> checkdataset()</code></li>
-<p> Check whether and which dataset is already loaded, download and visualise it.</p>
 
 <h2> Dataset </h2>
 <p> The study consists of 3 dataset named "Rilevazione qualità dell'aria" (Air Quality Detection) from year 2017 to 2019. 
