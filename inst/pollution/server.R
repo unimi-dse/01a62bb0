@@ -2,6 +2,7 @@
 
 #=== Shiny App Server ===
 
+source("checkdataset.R")
 
 shinyServer(function(input, output) {
 
