@@ -20,6 +20,7 @@ pollution <- function() {
   if (dir == "") {
     stop("Could not find pollution. Try re-installing `milanpollution`.", call. = FALSE)
   }
+  source("checkdataset.R")
 
   shiny::runApp(dir, display.mode = "normal", launch.browser = T)
 }
