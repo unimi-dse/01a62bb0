@@ -6,7 +6,7 @@
 #' then at the bottom of the page you will see "Informazioni supplementari" (Additional information) section.
 #' In this table there is the field ID (not packege id or revision id). [PS. CKAN API only supports csv files]\cr\cr
 #'
-#' Example of possible ID's from the "Rilevazione qualita' dell'aria" (Air Quality Detection):\cr
+#' ID's from the "Rilevazione qualita' dell'aria" (Air Quality Detection):\cr
 #' Year 2019: "698a58e6-f276-44e1-92b1-3d2b81a4ad47" \cr
 #' Year 2018: "ea80c691-74bd-4356-94b6-0f446f190c0b" \cr
 #' Year 2017: "a032a06e-24c2-4df1-ac83-d001e9ddc577"
@@ -14,9 +14,8 @@
 #'
 #' @return data.frame
 #'
-#' @examples
-#' \dontrun{
-#' restfullAPI(id)
+#' @examples{
+#' restfullAPI("698a58e6-f276-44e1-92b1-3d2b81a4ad47")
 #' }
 #' @export
 #'
