@@ -11,7 +11,7 @@
 <h2> Installation</h2>
 
 ```R
-# first install the R package "devtools" if not installed
+# first install the R package "devtools" if not installed (install.packages("devtools")
 devtools::install_github('unimi-dse/01a62bb0')
 ```
 
